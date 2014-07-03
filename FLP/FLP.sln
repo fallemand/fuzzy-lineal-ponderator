@@ -5,7 +5,15 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FLP", "FLP\FLP.csproj", "{5
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entidades", "Entidades\Entidades.csproj", "{9157B30D-B2B3-4A5D-B976-6904624ED2E6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AccesoDatos", "AccesoDatos\AccesoDatos.csproj", "{9322916D-DC36-4C72-91A3-2ADD017EE5D1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Logica", "Logica\Logica.csproj", "{CDE9A4AE-5BD0-490C-8DB2-FBED23B5EEC9}"
+EndProject
 Global
+	GlobalSection(SubversionScc) = preSolution
+		Svn-Managed = True
+		Manager = AnkhSVN - Subversion Support for Visual Studio
+	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -19,6 +27,14 @@ Global
 		{9157B30D-B2B3-4A5D-B976-6904624ED2E6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9157B30D-B2B3-4A5D-B976-6904624ED2E6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9157B30D-B2B3-4A5D-B976-6904624ED2E6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9322916D-DC36-4C72-91A3-2ADD017EE5D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9322916D-DC36-4C72-91A3-2ADD017EE5D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9322916D-DC36-4C72-91A3-2ADD017EE5D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9322916D-DC36-4C72-91A3-2ADD017EE5D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CDE9A4AE-5BD0-490C-8DB2-FBED23B5EEC9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CDE9A4AE-5BD0-490C-8DB2-FBED23B5EEC9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CDE9A4AE-5BD0-490C-8DB2-FBED23B5EEC9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CDE9A4AE-5BD0-490C-8DB2-FBED23B5EEC9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

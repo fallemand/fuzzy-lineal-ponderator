@@ -1,0 +1,160 @@
+﻿using AccesoDatos;
+using Entidades;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Logica
+{
+    public class GestorUsuario
+    {
+        /// <summary>
+        /// autor=Flor
+        /// Método para tomar los datos de la pantalla y crear la entidad Usuario
+        /// </summary>
+        /// <param name="nombre"></param>
+        /// <param name="mail"></param>
+        /// <param name="telefono"></param>
+        /// <param name="contrasenia"></param>
+        /// <returns>Usuario</returns>
+        public string registrarUsuario(string nombre, string mail, string contrasenia)
+        {
+            try
+            {
+                Usuario u = new Usuario
+                {
+                    nombre = nombre,
+                    email = mail,
+                    contrasenia = encriptarContrasenia(contrasenia),
+                    codigo = crearCodigo(),
+                    tipoUsuario = new TipoUsuario { idTipoUsuario = 1, nombre = "Administrador" },
+                };
+
+                DAOUsuario gestorBD = new DAOUsuario();
+                gestorBD.registrarUsuario(u);//guarda en la BD
+                return u.codigo;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+            ;
+        }
+
+
+        /// <summary>
+        /// Método para encriptar clave
+        /// autor=Flor
+        /// </summary>
+        /// <param name="claveSinencriptar"></param>
+        /// <returns></returns>
+        public string encriptarContrasenia(string claveSinEncriptar)
+        {
+
+            string result = string.Empty;
+            byte[] encryted = System.Text.Encoding.Unicode.GetBytes(claveSinEncriptar);
+            result = Convert.ToBase64String(encryted);
+            return result;
+        }
+
+
+        /// <summary>
+        /// Método para llamar al activarUsuario
+        /// autor=Flor
+        /// </summary>
+        /// <param name="claveSinencriptar"></param>
+        /// <returns></returns>
+        public int activarUsuario(string codigo)
+        {
+            try
+            {
+                DAOUsuario gestorBD = new DAOUsuario();
+                int idUsuario = gestorBD.ActivarCuenta(codigo);
+                return idUsuario;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+
+        }
+
+
+        /// <summary>
+        /// Metodo para obtener el usuario a partir del id
+        /// </summary>
+        /// <param name="idUsuario"></param>
+        /// <returns>Usuario</returns>
+        public Usuario obtenerUsuario(int idUsuario)
+        {
+            try
+            {
+                DAOUsuario gestorBD = new DAOUsuario();
+                Usuario usuario = gestorBD.obtenerUsuarioPorId(idUsuario);
+                return usuario;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+
+        /// <summary>
+        /// Metodo para crear codigo de activación
+        /// autor=Flor
+        /// </summary>
+        /// <param name="Largo de la clave"></param>
+        /// <returns></returns>
+        public static string crearCodigo()
+        {
+            string _allowedChars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@$?";
+            Byte[] randomBytes = new Byte[60];
+            char[] chars = new char[60];
+            int allowedCharCount = _allowedChars.Length;
+
+            for (int i = 0; i < chars.Length; i++)
+            {
+                Random randomObj = new Random();
+                randomObj.NextBytes(randomBytes);
+                chars[i] = _allowedChars[(int)randomBytes[i] % allowedCharCount];
+            }
+
+            return new string(chars);
+        }
+
+        /// <summary>
+        /// Metodo para validar el usuario
+        /// autor=Facu
+        /// </summary>
+        /// <param name="Largo de la clave"></param>
+        /// <returns></returns>
+        public Usuario validarUsuario(string email, string clave)
+        {
+            clave = encriptarContrasenia(clave);
+            DAOUsuario daoUsuario = new DAOUsuario();
+            Usuario usuario = daoUsuario.obtenerUsuarioPorEmailyContrasenia(email, clave);
+            if (usuario == null)
+                throw new Exception("No existe un usuario con ese email y contraseña");
+            if (usuario.esActivo == false)
+                throw new Exception("Debes activar tu cuenta para poder ingresar: <a href='activar.usuario.aspx'>Activar aquí</a>");
+            return usuario;
+        }
+
+        /// <summary>
+        /// Metodo para obtener los roles del suaruio
+        /// autor=Facu
+        /// </summary>
+        /// <param name="Largo de la clave"></param>
+        /// <returns></returns>
+        public string[] obtenerRolesDelUsuario(string email)
+        {
+            DAOUsuario daoUsuario = new DAOUsuario();
+            Usuario usuario = daoUsuario.buscarUsuarioPorEmail(email);
+            return new string[] { usuario.tipoUsuario.nombre };
+        }
+    }
+}
