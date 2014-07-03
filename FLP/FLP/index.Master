@@ -1,0 +1,237 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="index.master.cs" Inherits="FLP.index" %>
+
+<!doctype html>
+<html lang="es">
+<head>
+    <title>FLP | Fuzzy Lineal Ponderation</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/estilo.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="shortcut icon" href="img/theme/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="img/theme/favicon.ico" type="image/x-icon">
+    <!-- Archivos JavaScript -->
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery.validate.js"></script>
+    <script type="text/javascript" src="js/messages_es_AR.js"></script>
+    <script type="text/javascript" src="js/modernizr.custom.28468.js"></script>
+    <script type="text/javascript" src="js/jquery.cslider.js"></script>
+    <script type="text/javascript" src="js/responsive-tabs.js"></script>
+    <!-- Archivos JavaScript -->
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div id="desktopTest" class="hidden-xs hidden-sm"></div>
+        <!-- Navbar superior -->
+        <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Menú</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">
+                        <img src="img/theme/logo.png" alt="logo" />
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
+                    <p class="navbar-text">Ya tenes una cuenta?</p>
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-user"></span> Ingresar <b class="caret"></b>
+                            </a>
+                            <div class="dropdown-menu" style="padding: 10px;">
+                                <input class="form-control input-sm" name="username" id="username" type="text" placeholder="Email">
+                                <input class="form-control input-sm" name="password" id="password" type="password" placeholder="Contraseña">
+                                <button type="button" id="btnLogin" class="btn btn-default navbar-btn btn-xs pull-right">Ingresar</button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!-- Navbar superior -->
+
+        <!-- Wrapper -->
+        <div class="wrapper bg-granulado">
+            <!-- Contenido -->
+            <asp:ContentPlaceHolder ID="ContentIndex" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- Contenido -->
+            <div class="push"></div>
+        </div>
+        <!-- Wrapper -->
+
+        <!-- Footer -->
+        <div class="footer">
+            <div class="footer-superior hidden-sm hidden-xs">
+                <div class="container">
+                    <div class="col-md-2 col-md-offset-1">
+                        <h4>Fuzzy LP</h4>
+                        <ul>
+                            <li><a href="javascript:;"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                            <li><a href="registrar.html"><span class="glyphicon glyphicon-plus-sign"></span> Registrarse</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h4>Nosotros</h4>
+                        <ul>
+                            <li><a href="javascript:;"><span class="glyphicon glyphicon-user"></span> ¿Quienes Somos?</a></li>
+                            <li><a href="javascript:;"><span class="glyphicon glyphicon-briefcase"></span> Nuestros Servicios</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h4>Links</h4>
+                        <ul>
+                            <li> Sitio con motivo académico</li>
+                            <li><a href="http://www.frc.utn.edu.ar/"><span class="glyphicon glyphicon-book"></span> UTN FRC</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h4>Soporte y Ayuda</h4>
+                        <ul>
+                            <li><a href="javascript:;"><span class="glyphicon glyphicon-question-sign"></span> Preguntas Frecuentes</a></li>
+                            <li><a href="javascript:;"><span class="glyphicon glyphicon-plus-sign"></span> Realiza una pregunta</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-2">
+                        <h4>Contacto</h4>
+                        <ul>
+                            <li><span class="glyphicon glyphicon-envelope"></span> consultas@flp.com</li>
+                            <li><a href="http://www.egrappler.com;"><span class="glyphicon glyphicon-cog"></span> Formulario de Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-inferior">
+                <div class="container">
+                    <p class="pull-right">Fuzzy Lineal Ponderation | Creado por <a href="maillto:allemand@outlook.com.ar">Facundo Allemand</a> &copy; 2014.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+    </form>
+
+    <!-- Script Slider -->
+    <script type="text/javascript">
+        $(function () {
+
+            $('#da-slider').cslider({
+                autoplay: true,
+                bgincrement: 450,
+                interval: 7500
+            });
+        });
+    </script>
+    <!-- Script Slider -->
+
+    <!-- Script No Ocultar DropDown -->
+    <script type="text/javascript">
+        $('.dropdown-menu input, .dropdown-menu label').click(function (e) {
+            e.stopPropagation();
+        });
+    </script>
+    <!-- Script No Ocultar DropDown -->
+
+    <!-- Script Responsive Tabs -->
+    <script type="text/javascript">
+        (function ($) {
+            fakewaffle.responsiveTabs(['xs', 'sm']);
+        })(jQuery);
+    </script>
+    <!-- Script Responsive Tabs -->
+
+    <!-- Script Otros -->
+    <script>
+        jQuery(document).ready(function () {
+            $('[rel="txtTooltip"]').tooltip();
+            $('#color1').colorPicker();
+        });
+        if ($('#desktopTest').is(':hidden')) {
+            $('#collapse2').collapse();
+            $('#btnAgregar').addClass('pull-right');
+        }
+		</script>
+    <!-- Script Otros -->
+
+    <!-- Script Validar Form -->
+    <script>
+        $(document).ready(function () {
+            $("#form1").validate({
+                highlight: function (element) {
+                    $(element).closest('.form-group').removeClass('has-success').addClass('has-error');
+                },
+                unhighlight: function (element) {
+                    $(element).closest('.form-group').removeClass('has-error').addClass('has-success');
+                },
+                errorElement: 'span',
+                errorClass: 'help-block',
+                errorPlacement: function (error, element) {
+                    if (element.parent('.input-group').length) {
+                        error.insertAfter(element.parent());
+                    } else {
+                        error.insertAfter(element);
+                    }
+                },
+                onsubmit: false
+            });
+            $('.validationGroup .causesValidation').click(Validate);
+            $('.validationGroup :text').keydown(function (evt) {
+                if (evt.keyCode == 13) {
+                    var $nextInput = $(this).nextAll(':input:first');
+                    if ($nextInput.is(':submit')) {
+                        Validate(evt);
+                    }
+                    else {
+                        evt.preventDefault();
+                        $nextInput.focus();
+                    }
+                }
+            });
+        });
+
+        function Validate(evt) {
+            var $group = $(this).parents('.validationGroup');
+            var isValid = true;
+            $group.find(':input').each(function (i, item) {
+                if (!$(item).valid())
+                    isValid = false;
+            });
+            if (!isValid)
+                evt.preventDefault();
+        }
+    </script>
+    <!-- Script Validar Form -->
+
+    <!-- Script Deshabilitar Botones -->
+    <script>
+        jQuery(document).ready(function () {
+            $('[rel="txtTooltip"]').tooltip();
+        });
+    </script>
+    <script type="text/javascript">
+        var pbControl = null;
+        var prm = Sys.WebForms.PageRequestManager.getInstance();
+        prm.add_beginRequest(BeginRequestHandler);
+        prm.add_endRequest(EndRequestHandler);
+        function BeginRequestHandler(sender, args) {
+            pbControl = args.get_postBackElement();  //the control causing the postback 
+            pbControl.disabled = true;
+            $("#ContentAdmin_panFracaso").hide();
+            $("#ContentAdmin_panExito").hide();
+        }
+        function EndRequestHandler(sender, args) {
+            pbControl.disabled = false;
+            pbControl = null;
+        }
+    </script>
+    <!-- Script Deshabilitar Botones -->
+</body>
+</html>

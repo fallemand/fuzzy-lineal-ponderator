@@ -1,0 +1,113 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/index.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="FLP.index1" %>
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+</asp:Content>
+<asp:Content ID="Content2" ContentPlaceHolderID="ContentIndex" runat="server">
+    <div class="container">
+        <div id="da-slider" class="da-slider">
+            <div class="da-slide">
+                <h2>Simple e Intituivo</h2>
+                <p>Cargue criterios, variables linguísticas y alternativas de una forma sencilla e intuitiva, con interfaces que lo guiarán paso a paso</p>
+                <a href="#" onclick="$('#nombre').focus(); return false;" class="da-link">Registrarse</a>
+                <div class="da-img">
+                    <img src="img/theme/simple.png" alt="image01" /></div>
+            </div>
+            <div class="da-slide">
+                <h2>Elegantes Gráficas</h2>
+                <p>Luego de la carga de datos, se generará de forma automática elegantes gráficos que representen los datos.</p>
+                <a href="#" onclick="$('#nombre').focus(); return false;" class="da-link">Registrarse</a>
+                <div class="da-img">
+                    <img src="img/theme/graficos.png" alt="image01" /></div>
+            </div>
+            <div class="da-slide">
+                <h2>Obtenga Informes</h2>
+                <p>Podrá generar un completo informe con datos, tablas y gráficos de sus proyectos, permitiendo imprimirlos o exportarlos.</p>
+                <a href="#" onclick="$('#nombre').focus(); return false;" class="da-link">Registrarse</a>
+                <div class="da-img">
+                    <img src="img/theme/informe.png" alt="image01" /></div>
+            </div>
+            <div class="da-slide">
+                <h2>Guarde Proyectos</h2>
+                <p>Almacenaremos todos sus proyectos, de forma tal que tenga acceso a ellos desde cualquier parte. Simplemente ingrese con su usuario y podrá acceder a todos ellos</p>
+                <a href="#" onclick="$('#nombre').focus(); return false;" class="da-link">Registrarse</a>
+                <div class="da-img">
+                    <img src="img/theme/guardar.png" alt="image01" /></div>
+            </div>
+            <nav class="da-arrows">
+                <span class="da-arrows-prev"></span>
+                <span class="da-arrows-next"></span>
+            </nav>
+        </div>
+        <div class="col-md-8 ">
+            <div class="panel panel-default">
+                <div class="panel-heading">Pasos para Realizar un Proyecto</div>
+                <div class="panel-body">
+                    <ul class="nav nav-tabs responsive" style="margin-bottom: 15px;">
+                        <li class="active"><a href="#home" data-toggle="tab">1. Definir Criterios</a></li>
+                        <li class=""><a href="#profile" data-toggle="tab">2. Definir Variables</a></li>
+                        <li class=""><a href="#drop" data-toggle="tab">3. Definir Alternativas</a></li>
+                        <li class=""><a href="#drop" data-toggle="tab">4. Generar Informe</a></li>
+                    </ul>
+                    <div id="myTabContent" class="tab-content responsive">
+                        <div class="tab-pane fade active in thumbnail" id="home">
+                            <img src="img/theme/criterios.png" alt="criterios" />
+                        </div>
+                        <div class="tab-pane fade thumbnail" id="profile">
+                            <img src="img/theme/variables.png" alt="variables" />
+                        </div>
+                        <div class="tab-pane fade thumbnail" id="drop">
+                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="panel panel-default">
+                <div class="panel-heading">Registrarse</div>
+                <div class="panel-body">
+                    <fieldset id="registrar" class="validationGroup">
+                        <p>Por favor ingrese sus datos</p>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                <input type="text" class="form-control" id="nombre" minlength="5" maxlength="60" required="true" name="nombre" placeholder="Nombre">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+                                <input type="text" class="form-control" name="email" email="true" maxlength="60" required="true" placeholder="Email">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input type="text" class="form-control" id="clave" name="clave" minlength="5" maxlength="60" required="true" placeholder="Contraseña">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                <input type="text" class="form-control" name="repClave" equalto="#clave" required="true" placeholder="Repita Contraseña">
+                            </div>
+                        </div>
+                        <div class="clearfix">
+                            <div class="col-xs-7">
+                                <div class="form-group">
+                                    <label class="checkbox nomargin-top">
+                                        <input type="checkbox" id="cbTerminos" required="true" name="cbTerminos">
+                                        Acuerdo con los <a href="">Términos y Condiciones</a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-xs-5">
+                                <button class="btn btn-default pull-right causesValidation">Registrar</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+    </div>
+</asp:Content>
