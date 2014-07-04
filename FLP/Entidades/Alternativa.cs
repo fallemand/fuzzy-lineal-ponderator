@@ -11,6 +11,7 @@ namespace Entidades
         public int idAlternativa { get; set; }
         public int idProyecto { get; set; }
         public string nombre { get; set; }
-
+        public string abreviacion { get; set; }
+        List<Valoracion> listaValoraciones { get; set; }
     }
 }

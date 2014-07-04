@@ -39,4 +39,9 @@
             <!-- ContentPage -->
         </div>
     </div>
+    <script>
+        jQuery(document).ready(function () {
+                $('#color1').colorPicker();
+        });
+    </script>
 </asp:Content>

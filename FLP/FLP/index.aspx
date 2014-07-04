@@ -1,7 +1,4 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/index.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="FLP.index1" %>
-
-<asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-</asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentIndex" runat="server">
     <div class="container">
         <div id="da-slider" class="da-slider">
@@ -71,25 +68,25 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" class="form-control" id="nombre" minlength="5" maxlength="60" required="true" name="nombre" placeholder="Nombre">
+                                <input type="text" class="form-control" id="txtNombre" name="nombre" minlength="5" maxlength="40" required="true" placeholder="Nombre" runat="server">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input type="text" class="form-control" name="email" email="true" maxlength="60" required="true" placeholder="Email">
+                                <input type="text" class="form-control" id="txtEmail" name="txtEmail" email="true" maxlength="60" required="true" placeholder="Email" runat="server">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input type="text" class="form-control" id="clave" name="clave" minlength="5" maxlength="60" required="true" placeholder="Contraseña">
+                                <input type="text" class="form-control" id="txtContrasenia" name="txtContrasenia" minlength="5" maxlength="20" required="true" placeholder="Contraseña" runat="server">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input type="text" class="form-control" name="repClave" equalto="#clave" required="true" placeholder="Repita Contraseña">
+                                <input type="text" class="form-control" id="txtRepContrasenia" name="txtRepContrasenia" equalto="#ContentIndex_txtContrasenia" required="true" placeholder="Repita Contraseña">
                             </div>
                         </div>
                         <div class="clearfix">
@@ -102,9 +99,25 @@
                                 </div>
                             </div>
                             <div class="col-xs-5">
-                                <button class="btn btn-default pull-right causesValidation">Registrar</button>
+                                <asp:Button ID="btnRegistrar" runat="server" Text="Registrar" CssClass="btn btn-default pull-right causesValidation" OnClick="btnRegistrar_Click" />
                             </div>
                         </div>
+                        <asp:UpdatePanel ID="pnlRegistrar" runat="server">
+                             <Triggers>
+                                <asp:AsyncPostBackTrigger controlid="btnRegistrar" eventname="Click" />
+                            </Triggers>
+                            <ContentTemplate>
+                                <asp:UpdateProgress runat="server" id="PageUpdateProgress">
+                                    <ProgressTemplate>
+                                        <div class="col-xs-12">
+                                                <img src="/img/theme/load.gif" class="img-responsive center-block"/>
+                                        </div>
+                                    </ProgressTemplate>
+                                </asp:UpdateProgress>
+                                <asp:Panel ID="panExito" runat="server" CssClass="alert alert-success" Visible="False"><asp:Literal ID="litMensaje" runat="server"></asp:Literal></asp:Panel>
+                                <asp:Panel ID="panFracaso" runat="server" CssClass="alert alert-danger" Visible="False"><strong><asp:Literal ID="litError" runat="server"></asp:Literal></strong></asp:Panel>
+                            </ContentTemplate>
+                        </asp:UpdatePanel>
                     </fieldset>
                 </div>
             </div>

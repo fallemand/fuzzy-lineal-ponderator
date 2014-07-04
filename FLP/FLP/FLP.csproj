@@ -59,7 +59,7 @@
   <ItemGroup>
     <Content Include="criterios.aspx" />
     <Content Include="css\bootstrap.css" />
-    <Content Include="css\estilo.css" />
+    <Content Include="css\estiloflp.css" />
     <Content Include="css\slider.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="img\theme\ab.png" />
@@ -73,6 +73,7 @@
     <Content Include="img\theme\graficos.png" />
     <Content Include="img\theme\guardar.png" />
     <Content Include="img\theme\informe.png" />
+    <Content Include="img\theme\load.gif" />
     <Content Include="img\theme\logo.png" />
     <Content Include="img\theme\simple.png" />
     <Content Include="img\theme\variables.png" />
@@ -139,7 +140,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="img\theme\Thumbs.db" />
     <Content Include="index.Master" />
     <Content Include="proyecto.master" />
     <None Include="Web.Debug.config">
@@ -148,6 +148,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Logica\Logica.csproj">
+      <Project>{cde9a4ae-5bd0-490c-8db2-fbed23b5eec9}</Project>
+      <Name>Logica</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
