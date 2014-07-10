@@ -8,12 +8,15 @@ using System.Threading.Tasks;
 
 namespace Logica
 {
-    public class GestorUsuario
+   public class GestorUsuario
     {
+       public Usuario usuario;
+
         /// <summary>
         /// autor=Flor
         /// Método para tomar los datos de la pantalla y crear la entidad Usuario
         /// </summary>
+        /// <param name="apellido"></param>
         /// <param name="nombre"></param>
         /// <param name="mail"></param>
         /// <param name="telefono"></param>
@@ -29,7 +32,7 @@ namespace Logica
                     email = mail,
                     contrasenia = encriptarContrasenia(contrasenia),
                     codigo = crearCodigo(),
-                    tipoUsuario = new TipoUsuario { idTipoUsuario = 1, nombre = "Administrador" },
+                    tipoUsuario = new TipoUsuario { idTipoUsuario = 1, nombre = "Administrador" }
                 };
 
                 DAOUsuario gestorBD = new DAOUsuario();
@@ -38,9 +41,17 @@ namespace Logica
             }
             catch (Exception e)
             {
-                throw new Exception(e.Message);
+                if (e.Message.Contains("No se puede insertar una clave duplicada"))
+                {
+                    throw new Exception("El usuario con el mail: " + mail + " Ya se encuentra registrado. Por favor ingrese una cuenta de correo diferente.");
+                }
+                else
+                {
+                    throw new Exception(e.Message);
+                }
             }
 
+            
             ;
         }
 
@@ -72,7 +83,7 @@ namespace Logica
             try
             {
                 DAOUsuario gestorBD = new DAOUsuario();
-                int idUsuario = gestorBD.ActivarCuenta(codigo);
+                int idUsuario=gestorBD.ActivarCuenta(codigo);
                 return idUsuario;
             }
             catch (Exception e)
@@ -83,17 +94,17 @@ namespace Logica
         }
 
 
-        /// <summary>
-        /// Metodo para obtener el usuario a partir del id
-        /// </summary>
-        /// <param name="idUsuario"></param>
-        /// <returns>Usuario</returns>
+       /// <summary>
+       /// Metodo para obtener el usuario a partir del id
+       /// </summary>
+       /// <param name="idUsuario"></param>
+       /// <returns>Usuario</returns>
         public Usuario obtenerUsuario(int idUsuario)
         {
             try
-            {
-                DAOUsuario gestorBD = new DAOUsuario();
-                Usuario usuario = gestorBD.obtenerUsuarioPorId(idUsuario);
+        {
+            DAOUsuario gestorBD = new DAOUsuario();
+                Usuario usuario= gestorBD.obtenerUsuarioPorId(idUsuario);
                 return usuario;
             }
             catch (Exception e)
@@ -103,13 +114,13 @@ namespace Logica
         }
 
 
-        /// <summary>
-        /// Metodo para crear codigo de activación
-        /// autor=Flor
-        /// </summary>
-        /// <param name="Largo de la clave"></param>
-        /// <returns></returns>
-        public static string crearCodigo()
+       /// <summary>
+       /// Metodo para crear codigo de activación
+       /// autor=Flor
+       /// </summary>
+       /// <param name="Largo de la clave"></param>
+       /// <returns></returns>
+        public string crearCodigo()
         {
             string _allowedChars = "abcdefghijkmnpqrstuvwxyzABCDEFGHJKLMNPQRSTUVWXYZ23456789!@$?";
             Byte[] randomBytes = new Byte[60];
@@ -134,13 +145,13 @@ namespace Logica
         /// <returns></returns>
         public Usuario validarUsuario(string email, string clave)
         {
-            clave = encriptarContrasenia(clave);
-            DAOUsuario daoUsuario = new DAOUsuario();
-            Usuario usuario = daoUsuario.obtenerUsuarioPorEmailyContrasenia(email, clave);
+            clave=encriptarContrasenia(clave);
+            DAOUsuario daoUsuario= new DAOUsuario();
+            Usuario usuario= daoUsuario.obtenerUsuarioPorEmailyContrasenia(email, clave);
             if (usuario == null)
                 throw new Exception("No existe un usuario con ese email y contraseña");
             if (usuario.esActivo == false)
-                throw new Exception("Debes activar tu cuenta para poder ingresar: <a href='activar.usuario.aspx'>Activar aquí</a>");
+                throw new Exception("Debes activar tu cuenta para poder ingresar: <a href='activar.usuario.aspx?idUsuario="+usuario.idUsuario+"'>Activar aquí</a>");
             return usuario;
         }
 
@@ -152,9 +163,59 @@ namespace Logica
         /// <returns></returns>
         public string[] obtenerRolesDelUsuario(string email)
         {
-            DAOUsuario daoUsuario = new DAOUsuario();
-            Usuario usuario = daoUsuario.buscarUsuarioPorEmail(email);
+            DAOUsuario daoUsuario=new DAOUsuario();
+            Usuario usuario = daoUsuario.obtenerUsuarioPorEmail(email);
             return new string[] { usuario.tipoUsuario.nombre };
         }
+
+
+       /// <summary>
+       /// autor=Flor
+       /// metodo que trae un objeto usuario a partir de su e-mail
+       /// </summary>
+       /// <param name="mail"></param>
+       /// <returns></returns>
+        public Usuario obtenerUsuario(string mail)
+        {
+            try
+            {
+                DAOUsuario gestorBD = new DAOUsuario();
+                Usuario usuario = gestorBD.obtenerUsuarioPorEmail(mail);
+                if(usuario==null)
+                throw new Exception("No se encuentra registrado ningún usuario con ese e-mail.");
+
+                return usuario;
+            }
+            catch (Exception e)
+            {
+                throw new Exception(e.Message);
+            }
+        }
+
+
+
+
+       /// <summary>
+       /// Metodo para encriptar nueva clave y llamar al metodo apra guardarla en la bd
+       /// autor=Flor
+       /// </summary>
+       /// <param name="codigo"></param>
+       /// <param name="clave"></param>
+       /// <returns></returns>
+        public int reestablecerContrasenia(string codigo, string clave)
+        {
+            try
+            {
+                string claveEncriptada = encriptarContrasenia(clave);
+                DAOUsuario gestorBD = new DAOUsuario();
+                int idUsuario = gestorBD.RestablecerContrasenia(codigo,claveEncriptada);
+                return idUsuario;
+            }
+            catch(Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+
     }
 }

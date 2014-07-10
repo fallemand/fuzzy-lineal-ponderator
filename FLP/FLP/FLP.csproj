@@ -57,9 +57,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="activar.usuario.aspx" />
     <Content Include="criterios.aspx" />
     <Content Include="css\bootstrap.css" />
-    <Content Include="css\estiloflp.css" />
+    <Content Include="css\estilofl.css" />
     <Content Include="css\slider.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="img\theme\ab.png" />
@@ -92,6 +93,13 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="activar.usuario.aspx.cs">
+      <DependentUpon>activar.usuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="activar.usuario.aspx.designer.cs">
+      <DependentUpon>activar.usuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="criterios.aspx.cs">
       <DependentUpon>criterios.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -150,6 +158,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Entidades\Entidades.csproj">
+      <Project>{9157b30d-b2b3-4a5d-b976-6904624ed2e6}</Project>
+      <Name>Entidades</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Logica\Logica.csproj">
       <Project>{cde9a4ae-5bd0-490c-8db2-fbed23b5eec9}</Project>
       <Name>Logica</Name>

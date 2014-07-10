@@ -5,28 +5,28 @@
             <div class="da-slide">
                 <h2>Simple e Intituivo</h2>
                 <p>Cargue criterios, variables linguísticas y alternativas de una forma sencilla e intuitiva, con interfaces que lo guiarán paso a paso</p>
-                <a href="#" onclick="$('#nombre').focus(); return false;" class="da-link">Registrarse</a>
+                <a href="#" onclick="$('#ContentIndex_txtNombre').focus(); return false;" class="da-link">Registrarse</a>
                 <div class="da-img">
                     <img src="img/theme/simple.png" alt="image01" /></div>
             </div>
             <div class="da-slide">
                 <h2>Elegantes Gráficas</h2>
                 <p>Luego de la carga de datos, se generará de forma automática elegantes gráficos que representen los datos.</p>
-                <a href="#" onclick="$('#nombre').focus(); return false;" class="da-link">Registrarse</a>
+                <a href="#" onclick="$('#ContentIndex_txtNombre').focus(); return false;" class="da-link">Registrarse</a>
                 <div class="da-img">
                     <img src="img/theme/graficos.png" alt="image01" /></div>
             </div>
             <div class="da-slide">
                 <h2>Obtenga Informes</h2>
                 <p>Podrá generar un completo informe con datos, tablas y gráficos de sus proyectos, permitiendo imprimirlos o exportarlos.</p>
-                <a href="#" onclick="$('#nombre').focus(); return false;" class="da-link">Registrarse</a>
+                <a href="#" onclick="$('#ContentIndex_txtNombre').focus(); return false;" class="da-link">Registrarse</a>
                 <div class="da-img">
                     <img src="img/theme/informe.png" alt="image01" /></div>
             </div>
             <div class="da-slide">
                 <h2>Guarde Proyectos</h2>
                 <p>Almacenaremos todos sus proyectos, de forma tal que tenga acceso a ellos desde cualquier parte. Simplemente ingrese con su usuario y podrá acceder a todos ellos</p>
-                <a href="#" onclick="$('#nombre').focus(); return false;" class="da-link">Registrarse</a>
+                <a href="#" onclick="$('#ContentIndex_txtNombre').focus(); return false;" class="da-link">Registrarse</a>
                 <div class="da-img">
                     <img src="img/theme/guardar.png" alt="image01" /></div>
             </div>
@@ -68,25 +68,25 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                <input type="text" class="form-control" id="txtNombre" name="nombre" minlength="5" maxlength="40" required="true" placeholder="Nombre" runat="server">
+                                <input type="text" class="form-control" id="txtNombre"  minlength="5" maxlength="40" required="true" placeholder="Nombre" runat="server">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-                                <input type="text" class="form-control" id="txtEmail" name="txtEmail" email="true" maxlength="60" required="true" placeholder="Email" runat="server">
+                                <input type="text" class="form-control" id="txtEmail" email="true" maxlength="60" required="true" placeholder="Email" runat="server">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input type="text" class="form-control" id="txtContrasenia" name="txtContrasenia" minlength="5" maxlength="20" required="true" placeholder="Contraseña" runat="server">
+                                <input type="password" class="form-control" id="txtContrasenia" minlength="5" maxlength="20" required="true" placeholder="Contraseña" runat="server">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                <input type="text" class="form-control" id="txtRepContrasenia" name="txtRepContrasenia" equalto="#ContentIndex_txtContrasenia" required="true" placeholder="Repita Contraseña">
+                                <input type="password" class="form-control" id="txtRepContrasenia" equalto="#ContentIndex_txtContrasenia" required="true" placeholder="Repita Contraseña">
                             </div>
                         </div>
                         <div class="clearfix">
@@ -103,9 +103,6 @@
                             </div>
                         </div>
                         <asp:UpdatePanel ID="pnlRegistrar" runat="server">
-                             <Triggers>
-                                <asp:AsyncPostBackTrigger controlid="btnRegistrar" eventname="Click" />
-                            </Triggers>
                             <ContentTemplate>
                                 <asp:UpdateProgress runat="server" id="PageUpdateProgress">
                                     <ProgressTemplate>

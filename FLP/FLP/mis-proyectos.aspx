@@ -7,14 +7,15 @@
             <div class="panel panel-default shadow2">
                 <div class="panel-heading">Mis Proyectos</div>
                 <div class="panel-body">
-                    <fieldset class="form" role="form">
+                    <fieldset class="form validationGroup" role="form">
                         <div class="col-md-4">
                             <div class="form-group">
-                                <input type="text" class="form-control" name="nombre" placeholder="Nombre del Proyecto">
+                                <input type="text" id="txtNombre" class="form-control" required="true" maxlength="60" placeholder="Nombre del Proyecto" runat="server">
+                                <asp:Literal ID="litError" runat="server" Visible="False"></asp:Literal>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <button id="btnAgregar" type="submit" class="btn btn-default btn-sm">Crear un Nuevo Proyecto</button>
+                            <asp:Button ID="btnAgregar" runat="server" Text="Crear un Nuevo Proyecto" CssClass="btn btn-default btn-sm causesValidation" OnClick="btnAgregar_Click" />
                         </div>
                     </fieldset>
                     <hr>
@@ -30,47 +31,24 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Mano de Obra</td>
-                                <td>MO</td>
-                                <td>4</td>
-                                <td>4</td>
-                                <td>0.25</td>
-                                <td>
-                                    <a href="#" class="editar"><span class="glyphicon glyphicon-play" rel="txtTooltip" title="Seleccionar" data-toggle="tooltip" data-placement="top"></span></a>
-                                    <a href="#" class="editar"><span class="glyphicon glyphicon-pencil" rel="txtTooltip" title="Editar" data-toggle="tooltip" data-placement="top"></span></a>
-                                    <a href="#" class="editar"><span class="glyphicon glyphicon-remove eliminar" rel="txtTooltip" title="Eliminar" data-toggle="tooltip" data-placement="top"></span></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Beneficio</td>
-                                <td>BEN</td>
-                                <td>8</td>
-                                <td>4</td>
-                                <td>0.5</td>
-                                <td>
-                                    <a href="#" class="editar"><span class="glyphicon glyphicon-play" rel="txtTooltip" title="Seleccionar" data-toggle="tooltip" data-placement="top"></span></a>
-                                    <a href="#" class="editar"><span class="glyphicon glyphicon-pencil" rel="txtTooltip" title="Editar" data-toggle="tooltip" data-placement="top"></span></a>
-                                    <a href="#" class="editar"><span class="glyphicon glyphicon-remove eliminar" rel="txtTooltip" title="Eliminar" data-toggle="tooltip" data-placement="top"></span></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>Impacto Ambiental</td>
-                                <td>IA</td>
-                                <td>4</td>
-                                <td>4</td>
-                                <td>0.25</td>
-                                <td>
-                                    <a href="#" class="editar"><span class="glyphicon glyphicon-play" rel="txtTooltip" title="Seleccionar" data-toggle="tooltip" data-placement="top"></span></a>
-                                    <a href="#" class="editar"><span class="glyphicon glyphicon-pencil" rel="txtTooltip" title="Editar" data-toggle="tooltip" data-placement="top"></span></a>
-                                    <a href="#" class="editar"><span class="glyphicon glyphicon-remove eliminar" rel="txtTooltip" title="Eliminar" data-toggle="tooltip" data-placement="top"></span></a>
-                                </td>
-                            </tr>
+                            <asp:Repeater ID="rptProyectos" runat="server" OnItemCommand="rptProyectos_ItemCommand">
+                                <ItemTemplate>
+                                    <tr>
+                                        <td><%# Eval("nombre") %></td>
+                                        <td><%# Eval("fecha") %></td>
+                                        <td><%# Eval("cantCriterios") %></td>
+                                        <td><%# Eval("cantVariables") %></td>
+                                        <td><%# Eval("cantAlternativas") %></td>
+                                        <td>
+                                            <asp:LinkButton ID="btnSeleccionar" runat="server" CssClass="editar" CommandName="seleccionar" CommandArgument='<%# Eval("idProyecto") %>'><span class="glyphicon glyphicon-play" rel="txtTooltip" title="Seleccionar" data-toggle="tooltip" data-placement="top"></span></asp:LinkButton>
+                                            <asp:LinkButton ID="btnEditar" runat="server" CssClass="editar" CommandName="editar" CommandArgument='<%# Eval("idProyecto") %>'><span class="glyphicon glyphicon-pencil" rel="txtTooltip" title="Editar" data-toggle="tooltip" data-placement="top"></span></asp:LinkButton>
+                                            <asp:LinkButton ID="btnEliminar" runat="server" CssClass="editar" CommandName="eliminar" CommandArgument='<%# Eval("idProyecto") %>'><span class="glyphicon glyphicon-remove eliminar" rel="txtTooltip" title="Eliminar" data-toggle="tooltip" data-placement="top"></span></asp:LinkButton>
+                                        </td>
+                                    </tr>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </tbody>
                     </table>
-                </div>
-                <div class="panel-footer clearfix ">
-                    <button class="btn btn-primary pull-right">Siguiente</button>
                 </div>
             </div>
         </div>
