@@ -221,6 +221,9 @@ padding: 7px 10px;
 .nomargin-top {
   margin-top: 0px;
 }
+.nomargin-bottom {
+  margin-bottom: 0px;
+}
 .separador {
   margin-top: 60px;
 }
@@ -481,4 +484,35 @@ margin-bottom: 10px;
 
 .help-block {
 margin-bottom: 0px; 
+}
+
+.dropdown-menu .has-error .help-block {
+    color: #E7E7E7;
+}
+
+.alert a, .alert .alert-link {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.alert-success a, .alert .alert-link {
+    color: #3c763d;
+}
+
+.alert-danger a, .alert .alert-link {
+    color: #a94442;
+}
+
+.alert-xs {
+    padding: 5px 10px;
+    margin-bottom: 0;
+    margin-top: 8px;
+}
+
+.nopadding-right {
+    padding-right:0;
+}
+
+.dropdown-menu .input-group {
+    width:100%;
 }

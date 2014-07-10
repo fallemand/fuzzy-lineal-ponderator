@@ -41,7 +41,7 @@
     </div>
     <script>
         jQuery(document).ready(function () {
-                $('#color1').colorPicker();
+            $('#ContentIndex_ContentProyecto_txtColor').colorPicker();
         });
     </script>
 </asp:Content>

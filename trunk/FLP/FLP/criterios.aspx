@@ -4,29 +4,30 @@
     <div class="panel panel-default shadow2">
         <div class="panel-heading">1. Definir Criterios</div>
         <div class="panel-body">
-            <fieldset class="form" role="form">
+            <fieldset class="form validationGroup" role="form">
                 <div class="col-md-4">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="nombre" placeholder="Nombre del Criterio">
+                        <input type="text" class="form-control" id="txtNombre" placeholder="Nombre del Criterio" maxlength="60" required runat="server">
+                        <asp:Literal ID="litError" runat="server" Visible="False"></asp:Literal>
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="abreviacion" placeholder="Abreviación" rel="txtTooltip" title="Máximo 3 caracteres" data-toggle="tooltip" data-placement="top">
+                        <input type="text" class="form-control" id="txtAbreviacion" placeholder="Abreviación"  maxlength="4" required rel="txtTooltip" title="Máximo 4 caracteres" data-toggle="tooltip" data-placement="top" runat="server">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="peso" placeholder="Peso" rel="txtTooltip" title="Valor entre 1 y 10" data-toggle="tooltip" data-placement="top">
+                        <input type="text" class="form-control" id="txtPeso" placeholder="Peso" rel="txtTooltip" digit="true" max="10" min="1" maxlength="2" required title="Valor entre 1 y 10" data-toggle="tooltip" data-placement="top" runat="server">
                     </div>
                 </div>
                 <div class="col-md-2">
                     <div class="form-group colorpick" rel="txtTooltip" title="Seleccione un color" data-toggle="tooltip" data-placement="top">
-                        <input type="text" class="form-control" id="color1" name="color1" value="#E1E1E1" />
+                        <input type="text" class="form-control" id="txtColor" value="#E1E1E1" runat="server" />
                     </div>
                 </div>
                 <div class="col-md-2">
-                    <button id="btnAgregar" type="submit" class="btn btn-default btn-sm">Agregar</button>
+                    <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-default btn-sm causesValidation" OnClick="btnAgregar_Click" />
                 </div>
             </fieldset>
             <table class="table">

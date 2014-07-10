@@ -9,6 +9,7 @@ namespace Entidades
     public class Proyecto
     {
         public int idProyecto { get; set; }
+        public string nombre { get; set; }
         public DateTime fecha { get; set; }
         public List<Criterio> listaCriterios { get; set; }
         public List<Variable> listaVariables { get; set; }

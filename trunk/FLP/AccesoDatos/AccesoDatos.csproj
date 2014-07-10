@@ -40,6 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAOCriterio.cs" />
+    <Compile Include="DAOProyecto.cs" />
     <Compile Include="DAOTipoUsuario.cs" />
     <Compile Include="DAOUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
