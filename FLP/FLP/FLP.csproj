@@ -63,6 +63,7 @@
     <Content Include="css\estilofl.css" />
     <Content Include="css\slider.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
     <Content Include="img\theme\ab.png" />
     <Content Include="img\theme\abc.png" />
     <Content Include="img\theme\abcPrincipal.png" />
@@ -75,6 +76,7 @@
     <Content Include="img\theme\guardar.png" />
     <Content Include="img\theme\informe.png" />
     <Content Include="img\theme\load.gif" />
+    <Content Include="img\theme\load2.gif" />
     <Content Include="img\theme\logo.png" />
     <Content Include="img\theme\simple.png" />
     <Content Include="img\theme\variables.png" />
@@ -106,6 +108,9 @@
     </Compile>
     <Compile Include="criterios.aspx.designer.cs">
       <DependentUpon>criterios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
