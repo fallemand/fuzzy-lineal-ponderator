@@ -42,6 +42,10 @@
     <script>
         jQuery(document).ready(function () {
             $('#ContentIndex_ContentProyecto_txtColor').colorPicker();
+            Sys.WebForms.PageRequestManager.getInstance().add_endRequest(EndRequestHandler);
+            function EndRequestHandler(sender, args) {
+                $('#ContentIndex_ContentProyecto_txtColor').colorPicker();
+            }
         });
     </script>
 </asp:Content>

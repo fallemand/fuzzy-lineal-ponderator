@@ -27,11 +27,44 @@ namespace Logica
             }
         }
 
+        public void modificarProyecto(string nuevoNombre)
+        {
+            try
+            {
+                Proyecto proyecto=(Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
+                proyecto.nombre = nuevoNombre;
+                DAOProyecto daoProyecto = new DAOProyecto();
+                daoProyecto.ModificarProyecto(proyecto);
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
         public DataTable obtenerTodosDataTable()
         {
             Usuario usuario = (Usuario)System.Web.HttpContext.Current.Session["usuario"];
             DAOProyecto daoProyecto = new DAOProyecto();
             return daoProyecto.obtenerTodosDataTable(usuario);
+        }
+
+        public Proyecto obtenerProyectoPorId(int IdProyecto)
+        {
+            DAOProyecto daoProyecto = new DAOProyecto();
+            Proyecto proyecto = daoProyecto.obtenerProyectoPorId(IdProyecto);
+            if (proyecto == null)
+                throw new Exception("No existe ningun Proyecto con ese id");
+            return proyecto;
+        }
+
+        public void eliminarProyectoPorId()
+        {
+            DAOProyecto daoProyecto = new DAOProyecto();
+            Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
+            if(proyecto==null)
+                throw new Exception("No existe ningun Proyecto");
+            daoProyecto.eliminarProyectoPorId(proyecto.idProyecto);
         }
     }
 }
