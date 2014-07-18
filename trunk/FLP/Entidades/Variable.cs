@@ -13,8 +13,8 @@ namespace Entidades
         public string nombre { get; set; }
         public string abreviacion { get; set; }
         public string color { get; set; }
-        public float a { get; set; }
-        public float b { get; set; }
-        public float c { get; set; }
+        public decimal a { get; set; }
+        public decimal b { get; set; }
+        public decimal c { get; set; }
     }
 }

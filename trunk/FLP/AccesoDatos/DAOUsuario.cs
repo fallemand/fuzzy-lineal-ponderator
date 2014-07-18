@@ -9,16 +9,9 @@ using System.Threading.Tasks;
 
 namespace AccesoDatos
 {
-  public  class DAOUsuario
+    public  class DAOUsuario
     {
         public string cadenaDeConexion = System.Configuration.ConfigurationManager.ConnectionStrings["localhost"].ConnectionString;
-
-        public DAOUsuario()
-        {
-
-        }
-
-
 
       /// <summary>
       /// autor=Flor
@@ -117,14 +110,12 @@ namespace AccesoDatos
             }
         }
 
-
-
-/// <summary>
-/// Metodo para activar cuenta
-/// autor: Flor
-/// </summary>
-/// <param name="codigo"></param>
-/// Retorna el id del usuario activado
+        /// <summary>
+        /// Metodo para activar cuenta
+        /// autor: Flor
+        /// </summary>
+        /// <param name="codigo"></param>
+        /// Retorna el id del usuario activado
         public int ActivarCuenta(string codigo)
         {
            
@@ -203,7 +194,6 @@ namespace AccesoDatos
             }
             finally
             {
-
                 if (con != null && con.State == ConnectionState.Open)
                 {
                     con.Close();

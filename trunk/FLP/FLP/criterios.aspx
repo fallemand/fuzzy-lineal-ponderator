@@ -34,7 +34,7 @@
                                     <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-default btn-sm" OnClick="btnCancelar_Click" Visible="false" />
                                 </div>
                                 <div class="col-md-1">
-                                    <asp:UpdateProgress runat="server" ID="PageUpdateProgress">
+                                    <asp:UpdateProgress runat="server" ID="PageUpdateProgress" DisplayAfter="300">
                                         <ProgressTemplate>
                                             <img src="/img/theme/load2.gif" class="img-responsive center-block" />
                                         </ProgressTemplate>
@@ -60,7 +60,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <asp:Repeater ID="rptProyectos" runat="server" OnItemCommand="rptProyectos_ItemCommand">
+                                <asp:Repeater ID="rptCriterios" runat="server" OnItemCommand="rptProyectos_ItemCommand">
                                     <ItemTemplate>
                                         <tr>
                                             <td>
@@ -121,15 +121,46 @@
                 </div>
             </div>
     <script>
-        function limpiarCampos() {
-            $('.validationGroup').find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
-            $('#ContentIndex_ContentProyecto_txtColor').val('#E1E1E1')
-        };
         function openModalEliminar() {
             $('#eliminarCriterio').modal('show');
         };
         function closeModalEliminar() {
             $('#eliminarCriterio').modal('hide');
         };
+    </script>
+
+    <script type="text/javascript">
+        google.load('visualization', '1.0', { 'packages': ['corechart'] });
+        function drawPesosRelativos(datos, colores) {
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Topping');
+            data.addColumn('number', 'Slices');
+            data.addRows(
+                datos
+            );
+            //Opciones
+            var options = {
+                legend: 'none',
+                backgroundColor: '#FAFAFA',
+                colors: colores,
+            };
+            //Dibujar
+            var chart = new google.visualization.PieChart(document.getElementById('pesosChart2'));
+            chart.draw(data, options);
+        };
+
+        function drawPesos(datos) {
+            // Create the data table.
+            var data = google.visualization.arrayToDataTable(datos);
+            //Opciones
+            var options = {
+                legend: 'none',
+                backgroundColor: '#FAFAFA',
+            };
+            //Dibujar
+            var chart = new google.visualization.ColumnChart(document.getElementById('pesosChart1'));
+            chart.draw(data, options);
+        }
     </script>
 </asp:Content>

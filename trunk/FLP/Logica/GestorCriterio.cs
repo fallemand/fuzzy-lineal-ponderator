@@ -45,13 +45,13 @@ namespace Logica
             }
         }
 
-        public DataTable obtenerCriteriosDelProyecto()
+        public DataTable obtenerCriteriosPorProyecto()
         {
             Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
             if (proyecto == null)
                 throw new Exception("No hay un proyecto seleccionado");
             DAOCriterio daoCriterio = new DAOCriterio();
-            return daoCriterio.obtenerCriteriosDelProyecto(proyecto);
+            return daoCriterio.obtenerCriteriosPorProyectoTable(proyecto);
         }
 
         public Criterio obtenerCriterioPorId(int IdCriterio)
@@ -70,6 +70,43 @@ namespace Logica
             if (criterio == null)
                 throw new Exception("No existe ningun Criterio");
             daoCriterio.eliminarCriterioPorId(criterio.idCriterio);
+        }
+
+        public string obtenerGraficoPesosRelativos()
+        {
+            DAOCriterio daoCriterio = new DAOCriterio();
+            Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
+            List<Criterio> criterios = daoCriterio.obtenerCriteriosPorProyectoList(proyecto.idProyecto);
+            if (criterios == null)
+                throw new Exception("No existen criterios para el proyecto");
+            string resultado = "[";
+            foreach (Criterio criterio in criterios)
+            {
+                resultado += "['" + criterio.nombre + "', " + criterio.peso + "],";
+            }
+            resultado += "],[";
+            foreach (Criterio criterio in criterios)
+            {
+                resultado += "['" + criterio.color + "',],";
+            }
+            resultado += "]";
+            return resultado;
+        }
+
+        public string obtenerGraficoPesos()
+        {
+            DAOCriterio daoCriterio = new DAOCriterio();
+            Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
+            List<Criterio> criterios = daoCriterio.obtenerCriteriosPorProyectoList(proyecto.idProyecto);
+            if (criterios == null)
+                throw new Exception("No existen criterios para el proyecto");
+            string resultado = "[['Criterio', 'Peso', { role: 'style' }],";
+            foreach (Criterio criterio in criterios)
+            {
+                resultado += "['" + criterio.nombre + "', " + criterio.peso + ", '"+criterio.color+"'],";
+            }
+            resultado += "]";
+            return resultado;
         }
     }
 }

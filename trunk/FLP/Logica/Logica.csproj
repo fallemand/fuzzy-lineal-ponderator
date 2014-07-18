@@ -44,6 +44,7 @@
     <Compile Include="GestorMails.cs" />
     <Compile Include="GestorProyecto.cs" />
     <Compile Include="GestorUsuario.cs" />
+    <Compile Include="GestorVariable.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
