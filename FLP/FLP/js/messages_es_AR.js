@@ -11,7 +11,7 @@
 		url: "Por favor, escribí una URL válida.",
 		date: "Por favor, escribí una fecha válida.",
 		dateISO: "Por favor, escribí una fecha (ISO) válida.",
-		number: "Por favor, escribí un número entero válido.",
+		number: "Por favor, escribí un número válido.",
 		digits: "Por favor, escribí sólo dígitos.",
 		creditcard: "Por favor, escribí un número de tarjeta válido.",
 		equalTo: "Por favor, escribí el mismo valor de nuevo.",

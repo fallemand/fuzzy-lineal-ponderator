@@ -37,8 +37,8 @@ namespace FLP
                 litError.Visible = false;
 		        GestorCriterio gestor = new GestorCriterio();
                 gestor.registrarCriterio(txtNombre.Value, txtAbreviacion.Value, int.Parse(txtPeso.Value), txtColor.Value);
+                reestablecerPantalla();
                 cargarRepeater();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "limpiarCampos();", true);
 	        }
 	        catch (Exception ex)
 	        {
@@ -50,8 +50,17 @@ namespace FLP
         protected void cargarRepeater()
         {
             GestorCriterio gestor = new GestorCriterio();
-            rptProyectos.DataSource = gestor.obtenerCriteriosDelProyecto();
-            rptProyectos.DataBind();
+            rptCriterios.DataSource = gestor.obtenerCriteriosPorProyecto();
+            rptCriterios.DataBind();
+            cargarGraficos();
+            
+        }
+
+        private void cargarGraficos()
+        {
+            GestorCriterio gestor = new GestorCriterio();
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "pesos", "drawPesos(" + gestor.obtenerGraficoPesos() + ");", true);
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "pesosRelativos", "drawPesosRelativos(" + gestor.obtenerGraficoPesosRelativos() + ");", true);
         }
 
         protected void rptProyectos_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -79,6 +88,7 @@ namespace FLP
                     Session["criterio"] = criterio;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModalEliminar();", true);
                 }
+                cargarGraficos();
             }
             catch (Exception ex)
             {
@@ -119,6 +129,7 @@ namespace FLP
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             reestablecerPantalla();
+            cargarGraficos();
         }
 
         private void mostrarError()

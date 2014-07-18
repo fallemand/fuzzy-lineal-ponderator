@@ -75,7 +75,7 @@ namespace AccesoDatos
             }
         }
 
-        public DataTable obtenerCriteriosDelProyecto(Proyecto proyecto)
+        public DataTable obtenerCriteriosPorProyectoTable(Proyecto proyecto)
         {
             SqlConnection con = new SqlConnection(cadenaDeConexion);
             SqlCommand cmd = new SqlCommand();
@@ -144,7 +144,7 @@ namespace AccesoDatos
             }
         }
 
-        public List<Criterio> obtenerCriteriosPorProyecto(int idProyecto)
+        public List<Criterio> obtenerCriteriosPorProyectoList(int idProyecto)
         {
             SqlConnection con = new SqlConnection(cadenaDeConexion);
             SqlCommand cmd = new SqlCommand();
@@ -205,7 +205,7 @@ namespace AccesoDatos
             }
             catch (Exception ex)
             {
-                throw new Exception("Error al intentar eliminar el Criterioo: " + ex.Message);
+                throw new Exception("Error al intentar eliminar el Criterio: " + ex.Message);
             }
             finally
             {

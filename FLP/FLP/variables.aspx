@@ -1,116 +1,171 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/proyecto.master" AutoEventWireup="true" CodeBehind="variables.aspx.cs" Inherits="FLP.variables" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentProyecto" runat="server">
-    <div class="panel panel-default shadow2">
-        <div class="panel-heading">2. Definir Variables Linguísticas</div>
-        <div class="panel-body">
-            <fieldset class="form" role="form">
-                <div class="col-md-9">
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="nombre" placeholder="Nombre de la Variable">
-                        </div>
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+        <ContentTemplate>
+            <div class="panel panel-default shadow2">
+                <div class="panel-heading">2. Definir Variables Linguísticas</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <fieldset class="form validationGroup" role="form">
+                            <div class="col-md-9">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="txtNombre" rangelength="4,60" required placeholder="Nombre de la Variable" runat="server">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" id="txtAbreviacion" rangelength="1,4" required placeholder="Abreviación" rel="txtTooltip" title="Máximo 4 caracteres" data-toggle="tooltip" data-placement="top" runat="server">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group colorpick" rel="txtTooltip" title="Seleccione un color" data-toggle="tooltip" data-placement="top">
+                                            <input type="text" class="form-control" id="txtColor" value="#E1E1E1" runat="server" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <asp:UpdateProgress runat="server" ID="PageUpdateProgress" DisplayAfter="300">
+                                            <ProgressTemplate>
+                                                <img src="/img/theme/load2.gif" class="img-responsive center-block" />
+                                            </ProgressTemplate>
+                                        </asp:UpdateProgress>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="txtA" placeholder="Valor a" number="true" rangelength="1, 6"  required rel="txtTooltip" title="Valor numérico de a. Como lo indica la imagen" data-toggle="tooltip" data-placement="top" runat="server">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="txtB" placeholder="Valor b" number="true" rangelength="1, 6" required rel="txtTooltip" title="Valor numérico de b. Como lo indica la imagen" data-toggle="tooltip" data-placement="top" runat="server">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-group">
+                                            <input type="number" class="form-control" id="txtC" placeholder="Valor c" number="true" rangelength="1, 6"  required rel="txtTooltip" title="Valor numérico de c. Como lo indica la imagen" data-toggle="tooltip" data-placement="top" runat="server">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 clearfix">
+                                        <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-default btn-sm causesValidation" OnClick="btnAgregar_Click" />
+                                        <asp:Button ID="btnModificar" runat="server" Text="Editar" CssClass="btn btn-default btn-sm causesValidation" OnClick="btnModificar_Click" Visible="false" />
+                                        <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-default btn-sm" OnClick="btnCancelar_Click" Visible="false" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        <asp:Panel ID="panFracaso" runat="server" CssClass="alert alert-danger alert-xs" Visible="False">
+                                            <asp:Literal ID="litError" runat="server" Visible="False"></asp:Literal>
+                                        </asp:Panel>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="thumbnail" rel="txtTooltip" title="Hacer clic para ver más ejemplos" data-toggle="tooltip" data-placement="top">
+                                    <img src="img/theme/abcPrincipal.png" class="" />
+                                </div>
+                            </div>
+                        </fieldset>
                     </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="abreviacion" placeholder="Abreviación" rel="txtTooltip" title="Máximo 3 caracteres" data-toggle="tooltip" data-placement="top">
-                        </div>
+                    <div class="row">
+                        <table class="table col-md-12">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-1">Color</th>
+                                    <th class="col-md-5">Variable</th>
+                                    <th class="col-md-2">Abreviación</th>
+                                    <th class="col-md-1">Valor a</th>
+                                    <th class="col-md-1">Valor b</th>
+                                    <th class="col-md-1">Valor c</th>
+                                    <th class="col-md-1"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <asp:Repeater ID="rptVariables" runat="server" OnItemCommand="rptProyectos_ItemCommand">
+                                    <ItemTemplate>
+                                        <tr>
+                                            <td>
+                                                <div class="colorPicker-picker" style="background-color: <%# Eval("color") %>;">&nbsp;</div>
+                                            </td>
+                                            <td><%# Eval("nombre") %></td>
+                                            <td><%# Eval("abreviacion") %></td>
+                                            <td><%# Eval("a") %></td>
+                                            <td><%# Eval("b") %></td>
+                                            <td><%# Eval("c") %></td>
+                                            <td>
+                                                <asp:LinkButton ClientIDMode="AutoID" ID="btnEditar" runat="server" CssClass="editar" CommandName="editar" CommandArgument='<%# Eval("idVariable") %>' rel="txtTooltip" title="Editar" data-toggle="tooltip" data-placement="top"><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
+                                                <asp:LinkButton ClientIDMode="AutoID" ID="btnEliminar" runat="server" CssClass="editar" CommandName="eliminar" CommandArgument='<%# Eval("idVariable") %>' rel="txtTooltip" title="Eliminar" data-toggle="tooltip" data-placement="top"><span class="glyphicon glyphicon-remove eliminar"></span></asp:LinkButton>
+                                            </td>
+                                        </tr>
+                                    </ItemTemplate>
+                                </asp:Repeater>
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="col-md-2">
-                        <div class="form-group colorpick" rel="txtTooltip" title="Seleccione un color" data-toggle="tooltip" data-placement="top">
-                            <input type="text" class="form-control" id="color1" name="color1" value="#E1E1E1" />
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="well well-sm">
+                                <div id="variablesChart"></div>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="a" placeholder="Valor de a" rel="txtTooltip" title="Máximo 3 caracteres" data-toggle="tooltip" data-placement="top">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="b" placeholder="Valor de b" rel="txtTooltip" title="Máximo 3 caracteres" data-toggle="tooltip" data-placement="top">
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="form-group">
-                            <input type="text" class="form-control" name="c" placeholder="Valor de c" rel="txtTooltip" title="Máximo 3 caracteres" data-toggle="tooltip" data-placement="top">
-                        </div>
-                    </div>
-                    <div class="col-md-2 clearfix">
-                        <button id="btnAgregar" type="submit" class="btn btn-default btn-sm pull-right">Agregar</button>
                     </div>
                 </div>
-                <div class="col-md-3">
-                    <div class="thumbnail" rel="txtTooltip" title="Hacer clic para ver más ejemplos" data-toggle="tooltip" data-placement="top">
-                        <img src="img/theme/abcPrincipal.png" class="" />
-                    </div>
+                <div class="panel-footer clearfix ">
+                    <button class="btn btn-primary pull-right">Siguiente</button>
                 </div>
-            </fieldset>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th class="col-md-1">Color</th>
-                        <th class="col-md-5">Variable</th>
-                        <th class="col-md-2">Abreviación</th>
-                        <th class="col-md-1">Valor a</th>
-                        <th class="col-md-1">Valor b</th>
-                        <th class="col-md-1">Valor c</th>
-                        <th class="col-md-1"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <div class="colorPicker-picker" style="background-color: rgb(123, 209, 72);">&nbsp;</div>
-                        </td>
-                        <td>Destacado</td>
-                        <td>Des</td>
-                        <td>0</td>
-                        <td>0.1</td>
-                        <td>0.2</td>
-                        <td>
-                            <a href="#" class="editar"><span class="glyphicon glyphicon-pencil" rel="txtTooltip" title="Editar" data-toggle="tooltip" data-placement="top"></span></a>
-                            <a href="#" class="editar"><span class="glyphicon glyphicon-remove eliminar" rel="txtTooltip" title="Eliminar" data-toggle="tooltip" data-placement="top"></span></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="colorPicker-picker" style="background-color: rgb(70, 214, 219);">&nbsp;</div>
-                        </td>
-                        <td>No Superante</td>
-                        <td>NoS</td>
-                        <td>0.1</td>
-                        <td>0.2</td>
-                        <td>0.3</td>
-                        <td>
-                            <a href="#" class="editar"><span class="glyphicon glyphicon-pencil" rel="txtTooltip" title="Editar" data-toggle="tooltip" data-placement="top"></span></a>
-                            <a href="#" class="editar"><span class="glyphicon glyphicon-remove eliminar" rel="txtTooltip" title="Eliminar" data-toggle="tooltip" data-placement="top"></span></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div class="colorPicker-picker" style="background-color: rgb(255, 136, 124);">&nbsp;</div>
-                        </td>
-                        <td>Regular</td>
-                        <td>Res</td>
-                        <td>0.2</td>
-                        <td>0.3</td>
-                        <td>0.4</td>
-                        <td>
-                            <a href="#" class="editar"><span class="glyphicon glyphicon-pencil" rel="txtTooltip" title="Editar" data-toggle="tooltip" data-placement="top"></span></a>
-                            <a href="#" class="editar"><span class="glyphicon glyphicon-remove eliminar" rel="txtTooltip" title="Eliminar" data-toggle="tooltip" data-placement="top"></span></a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="col-md-12">
-                <div class="well well-sm">
-                    <div id="variablesChart"></div>
+            </div>
+        </ContentTemplate>
+        <Triggers>
+            <asp:AsyncPostBackTrigger ControlID="btnCancelarEliminacion" EventName="Click" />
+            <asp:AsyncPostBackTrigger ControlID="btnEliminar" EventName="Click" />
+        </Triggers>
+    </asp:UpdatePanel>
+    <div class="modal fade bs-example-modal-sm" id="eliminarCriterio" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Eliminar Proyecto</h4>
+                </div>
+                <div class="modal-body">
+                    ¿Esta seguro? Se eliminará la variable en todas las alternativas donde la haya usado.
+                </div>
+                <div class="modal-footer">
+                    <asp:Button ID="btnCancelarEliminacion" runat="server" Text="Cancelar" CssClass="btn btn-default" data-dismiss="modal" OnClick="btnCancelarEliminacion_Click" />
+                    <asp:Button ID="btnEliminar" runat="server" CssClass="btn btn-danger" Text="Eliminar" OnClick="btnEliminar_Click" />
                 </div>
             </div>
         </div>
-        <div class="panel-footer clearfix">
-            <button class="btn btn-primary pull-right">Siguiente</button>
-        </div>
     </div>
+    <script>
+        function limpiarCampos() {
+            $('.validationGroup').find('input[type=text], input[type=password], input[type=number], input[type=email], textarea').val('');
+            $('#ContentIndex_ContentProyecto_txtColor').val('#E1E1E1')
+        };
+        function openModalEliminar() {
+            $('#eliminarCriterio').modal('show');
+        };
+        function closeModalEliminar() {
+            $('#eliminarCriterio').modal('hide');
+        };
+    </script>
+
+    <script type="text/javascript">
+        google.load('visualization', '1.0', { 'packages': ['corechart'] });
+        function drawVariables(datos, colores) {
+            // Create the data table.
+            var data = google.visualization.arrayToDataTable(datos);
+            //Opciones
+            var options = {
+                height: 250,
+                colors: colores,
+            };
+            //Dibujar
+            var chart = new google.visualization.AreaChart(document.getElementById('variablesChart'));
+            chart.draw(data, options);
+        }
+    </script>
 </asp:Content>
