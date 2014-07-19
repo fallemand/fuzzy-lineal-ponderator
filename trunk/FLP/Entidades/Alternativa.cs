@@ -14,5 +14,6 @@ namespace Entidades
         public string abreviacion { get; set; }
         public string color { get; set; }
         public List<DetalleAlternativa> listaDetallesAlternativa { get; set; }
+        public Resultado resultado;
     }
 }

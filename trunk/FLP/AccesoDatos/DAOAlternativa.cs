@@ -218,7 +218,17 @@ namespace AccesoDatos
                     cmd.Parameters.Add(new SqlParameter("@idVariable", detalleAlternativa.variable.idVariable));
                     cmd.Parameters.Add(new SqlParameter("@idAlternativa", idAlternativa));
                     cmd.CommandText = sql;
-                    cmd.ExecuteNonQuery();
+                    int filasAfectadas = cmd.ExecuteNonQuery();
+                    if (filasAfectadas == 0)
+                    {
+                        sql = @"INSERT INTO DetallesAlternativa(idVariable, idCriterio, idAlternativa) VALUES(@idVariable, @idCriterio, @idAlternativa)";
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.Add(new SqlParameter("@idCriterio", detalleAlternativa.criterio.idCriterio));
+                        cmd.Parameters.Add(new SqlParameter("@idVariable", detalleAlternativa.variable.idVariable));
+                        cmd.Parameters.Add(new SqlParameter("@idAlternativa", idAlternativa));
+                        cmd.CommandText = sql;
+                        cmd.ExecuteNonQuery();
+                    }
                 }
                 trans.Commit();
             }

@@ -8,7 +8,7 @@
                 <div class="panel-body">
                     <fieldset class="form validationGroup" role="form">
                         <div class="row">
-                            <div class="col-md-3">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <input type="text" class="form-control" id="txtNombre" rangelength="4,60" required placeholder="Nombre de la Alternativa" runat="server">
                                 </div>
@@ -23,7 +23,7 @@
                                     <input type="text" class="form-control" id="txtColor" value="#E1E1E1" runat="server" />
                                 </div>
                             </div>
-                            <div class="col-md-4 clearfix">
+                            <div class="col-md-3 clearfix">
                                 <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-default btn-sm causesValidation" OnClick="btnAgregar_Click" />
                                 <asp:Button ID="btnModificar" runat="server" Text="Editar" CssClass="btn btn-default btn-sm causesValidation" OnClick="btnModificar_Click" Visible="false" />
                                 <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-default btn-sm" OnClick="btnCancelar_Click" Visible="false" />
@@ -41,8 +41,8 @@
                                 <ItemTemplate>
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <asp:DropDownList ID="ddlVariables" runat="server" CssClass="form-control" required></asp:DropDownList>
                                             <asp:HiddenField ID="txtIdCriterio" runat="server" />
+                                            <asp:DropDownList ID="ddlVariables" runat="server" CssClass="form-control" required></asp:DropDownList>
                                         </div>
                                     </div>
                                 </ItemTemplate>
@@ -65,7 +65,7 @@
                                     <th class="col-md-1">Abrev</th>
                                     <asp:Repeater ID="rptCriteriosTabla" runat="server">
                                         <ItemTemplate>
-                                            <th class="col-md-1"><%# Eval("abreviacion") %></th>
+                                            <th class="col-md-1"><%# Eval("abreviacion") %> (<%# Eval("peso") %>)</th>
                                         </ItemTemplate>
                                     </asp:Repeater>
                                     <th class="col-md-1"></th>

@@ -76,8 +76,11 @@ namespace FLP
                     {
                         DropDownList ddlVariables = (DropDownList)item.FindControl("ddlVariables");
                         HiddenField txtIdCriterio = (HiddenField)item.FindControl("txtIdCriterio");
-                        ddlVariables.SelectedValue = alternativa.listaDetallesAlternativa.ElementAt(i).variable.idVariable.ToString();
-                        txtIdCriterio.Value = alternativa.listaDetallesAlternativa.ElementAt(i).criterio.idCriterio.ToString();
+                        if (i < alternativa.listaDetallesAlternativa.Count)
+                        {
+                            ddlVariables.SelectedValue = alternativa.listaDetallesAlternativa.ElementAt(i).variable.idVariable.ToString();
+                            txtIdCriterio.Value = alternativa.listaDetallesAlternativa.ElementAt(i).criterio.idCriterio.ToString();
+                        }
                         i++;
                     }
                     btnAgregar.Visible = false;

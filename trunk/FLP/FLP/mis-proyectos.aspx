@@ -12,7 +12,7 @@
                         <div class="panel-body">
                             <fieldset class="form validationGroup" role="form">
                                 <div class="row">
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         <div class="form-group">
                                             <input type="text" id="txtNombre" class="form-control" required="true" maxlength="60" placeholder="Nombre del Proyecto" runat="server">
                                         </div>

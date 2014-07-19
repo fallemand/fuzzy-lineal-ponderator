@@ -11,7 +11,7 @@
                 <div class="panel panel-default">
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapse2">
                         <div class="panel-heading">
-                            <span class="glyphicon glyphicon-chevron-down"></span>Crear Nuevo Proyecto
+                            <span class="glyphicon glyphicon-chevron-down"></span> Crear Nuevo Proyecto
                         </div>
                     </a>
                     <div id="collapse2" class="panel-collapse collapse in">
@@ -19,8 +19,7 @@
                             <asp:UpdatePanel ID="upMaster" runat="server">
                                 <ContentTemplate>
                                     <a href="mis-proyectos.aspx" class="list-group-item" rel="txtTooltip" data-toggle="tooltip" data-placement="bottom" title="Ver Mis Proyectos">
-                                        <span class="glyphicon glyphicon-certificate"></span><strong>
-                                            <asp:Literal ID="litNombreProyecto" runat="server"></asp:Literal></strong>
+                                        <strong><asp:Literal ID="litNombreProyecto" runat="server"></asp:Literal></strong>
                                     </a>
                                     <a href="criterios.aspx" class="list-group-item" id="lbCriterios" runat="server">
                                         <span class="badge" rel="txtTooltip" data-toggle="tooltip" data-placement="left" title="Criterios Definidos">

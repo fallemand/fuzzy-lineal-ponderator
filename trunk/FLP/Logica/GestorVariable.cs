@@ -91,7 +91,7 @@ namespace Logica
             listaX.Sort();
             foreach (decimal valorX in listaX)
             {
-                resultado += "['" + valorX + "',";
+                resultado += "[" + valorX.ToString(System.Globalization.CultureInfo.InvariantCulture) + ",";
                 foreach (Variable variable in variables)
                 {
                     decimal valorY = obtenerValorYparaX(valorX, variable);
