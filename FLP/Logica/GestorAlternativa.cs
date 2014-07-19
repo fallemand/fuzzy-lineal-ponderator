@@ -44,6 +44,7 @@ namespace Logica
                     valoracion.criterio = gestorCriterio.obtenerCriterioPorId(valoracion.criterio.idCriterio);
                     valoracion.variable = gestorVariable.obtenerVariablePorId(valoracion.variable.idVariable);
                 }
+                alternativa.resultado = generarResultadoAlternativa(alternativa);
             }
             return alternativas;
         }
@@ -116,17 +117,17 @@ namespace Logica
             foreach (Alternativa alternativa in listaAlternativas)
             {
                 resultado += "'" + alternativa.abreviacion + "', ";
-                listaResultados.Add(generarResultadoAlternativa(alternativa));
+                listaResultados.Add(alternativa.resultado);
             }
             resultado += "],";
             List<decimal> listaX = obtenerValoresEjeX(listaResultados);
             listaX.Sort();
             foreach (decimal valorX in listaX)
             {
-                resultado += "['" + valorX + "',";
-                foreach (Resultado resultadoAlternativa in listaResultados)
+                resultado += "[" + valorX.ToString(System.Globalization.CultureInfo.InvariantCulture) + ",";
+                foreach (Alternativa alternativa in listaAlternativas)
                 {
-                    decimal valorY = obtenerValorYparaX(valorX, resultadoAlternativa);
+                    decimal valorY = obtenerValorYparaX(valorX, alternativa.resultado);
                     string stringY;
                     if (valorY == -9909)
                         stringY = "null";
