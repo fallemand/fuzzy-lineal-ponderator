@@ -43,9 +43,10 @@
     <Compile Include="Criterio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Proyecto.cs" />
+    <Compile Include="Resultado.cs" />
     <Compile Include="TipoUsuario.cs" />
     <Compile Include="Usuario.cs" />
-    <Compile Include="Valoracion.cs" />
+    <Compile Include="DetalleAlternativa.cs" />
     <Compile Include="Variable.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

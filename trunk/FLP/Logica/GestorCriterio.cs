@@ -13,8 +13,6 @@ namespace Logica
     {
         public void registrarCriterio(string nombre, string abreviacion, int peso, string color)
         {
-            try
-            {
                 Criterio criterio = new Criterio() { nombre = nombre, abreviacion = abreviacion, peso = peso, color = color };
                 Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
                 DAOCriterio daoCriterio = new DAOCriterio();
@@ -23,35 +21,32 @@ namespace Logica
                     proyecto.listaCriterios = new List<Criterio>();
                 proyecto.listaCriterios.Add(criterio);
                 System.Web.HttpContext.Current.Session["proyecto"] = proyecto;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
 
         public void modificarCriterio(string nombre, string abreviacion, int peso, string color)
         {
-            try
-            {
                 Criterio criterioViejo = (Criterio)System.Web.HttpContext.Current.Session["criterio"];
                 Criterio criterioNuevo = new Criterio() { idCriterio = criterioViejo.idCriterio, idProyecto = criterioViejo.idProyecto, nombre = nombre, abreviacion = abreviacion, peso = peso, color = color };
                 DAOCriterio daoCriterio = new DAOCriterio();
                 daoCriterio.modificarCriterio(criterioNuevo);
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
 
-        public DataTable obtenerCriteriosPorProyecto()
+        public DataTable obtenerCriteriosPorProyectoTable()
         {
             Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
             if (proyecto == null)
                 throw new Exception("No hay un proyecto seleccionado");
             DAOCriterio daoCriterio = new DAOCriterio();
             return daoCriterio.obtenerCriteriosPorProyectoTable(proyecto);
+        }
+
+        public List<Criterio> obtenerCriteriosPorProyecto()
+        {
+            Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
+            if (proyecto == null)
+                throw new Exception("No hay un proyecto seleccionado");
+            DAOCriterio daoCriterio = new DAOCriterio();
+            return daoCriterio.obtenerCriteriosPorProyectoList(proyecto.idProyecto);
         }
 
         public Criterio obtenerCriterioPorId(int IdCriterio)
@@ -107,6 +102,13 @@ namespace Logica
             }
             resultado += "]";
             return resultado;
+        }
+
+        public int obtenerCantCriteriosPorProyecto()
+        {
+            DAOCriterio daoCriterio = new DAOCriterio();
+            Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
+            return daoCriterio.obtenerCantCriteriosPorProyecto(proyecto.idProyecto);
         }
     }
 }

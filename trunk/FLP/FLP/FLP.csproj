@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="activar.usuario.aspx" />
+    <Content Include="alternativas.aspx" />
     <Content Include="criterios.aspx" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\estilofl.css" />
@@ -101,6 +102,13 @@
     </Compile>
     <Compile Include="activar.usuario.aspx.designer.cs">
       <DependentUpon>activar.usuario.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="alternativas.aspx.cs">
+      <DependentUpon>alternativas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="alternativas.aspx.designer.cs">
+      <DependentUpon>alternativas.aspx</DependentUpon>
     </Compile>
     <Compile Include="criterios.aspx.cs">
       <DependentUpon>criterios.aspx</DependentUpon>

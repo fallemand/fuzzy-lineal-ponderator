@@ -16,10 +16,15 @@ namespace FLP
         {
             if (!Page.IsPostBack)
             {
-                Proyecto proyecto = (Proyecto)Session["proyecto"];
-                if (proyecto == null)
-                    Response.Redirect("mis-proyectos.aspx");
-                cargarRepeater();
+                try
+                {
+                    cargarRepeater();
+                }
+                catch (Exception ex)
+                {
+                    mostrarError();
+                    litError.Text = ex.Message;
+                }
             }
         }
 
@@ -87,6 +92,7 @@ namespace FLP
                 {
                     Variable variable = gestor.obtenerVariablePorId(int.Parse(e.CommandArgument.ToString()));
                     Session["variable"] = variable;
+                    litNombreVariable.Text = variable.nombre;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModalEliminar();", true);
                 }
                 cargarGrafico();
@@ -107,9 +113,9 @@ namespace FLP
         {
             try
             {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "closeModalEliminar();", true);
                 GestorVariable gestor = new GestorVariable();
                 gestor.eliminarVariablePorId();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "closeModalEliminar();", true);
                 cargarRepeater();
                 reestablecerPantalla();
             }
@@ -117,6 +123,18 @@ namespace FLP
             {
                 mostrarError();
                 litError.Text = ex.Message;
+            }
+        }
+
+        protected void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            GestorVariable gestor = new GestorVariable();
+            if (gestor.obtenerCantVariablesPorProyecto() > 0)
+                Response.Redirect("alternativas.aspx");
+            else
+            {
+                mostrarError();
+                litError.Text = "Debe cargar al menos una variable!";
             }
         }
 
@@ -152,7 +170,8 @@ namespace FLP
         private void cargarGrafico()
         {
             GestorVariable gestor = new GestorVariable();
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "variables", "drawVariables(" + gestor.obtenerGraficoVariables() + ");", true);
+            if(gestor.obtenerCantVariablesPorProyecto() > 0)
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "variables", "drawVariables(" + gestor.obtenerGraficoVariables() + ");", true);
         }
     }
 }

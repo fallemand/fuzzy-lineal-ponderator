@@ -42,6 +42,11 @@ namespace AccesoDatos
                 else
                     throw;
             }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
+            }
         }
 
         public void modificarCriterio(Criterio criterio)
@@ -73,6 +78,11 @@ namespace AccesoDatos
                 else
                     throw;
             }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
+            }
         }
 
         public DataTable obtenerCriteriosPorProyectoTable(Proyecto proyecto)
@@ -100,6 +110,11 @@ namespace AccesoDatos
             catch (Exception)
             {
                 throw new Exception("Error al obtener los Criterios del Proyecto");
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
             }
         }
 
@@ -206,6 +221,62 @@ namespace AccesoDatos
             catch (Exception ex)
             {
                 throw new Exception("Error al intentar eliminar el Criterio: " + ex.Message);
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
+            }
+        }
+
+        public void eliminarCriterioPorProyecto(int idProyecto)
+        {
+            SqlConnection con = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                    cmd.Connection = con;
+                }
+                string sql = @"DELETE FROM Criterios WHERE idProyecto = @idProyecto";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@idProyecto", idProyecto);
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar eliminar el Criterio: " + ex.Message);
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
+            }
+        }
+
+        public int obtenerCantCriteriosPorProyecto(int idProyecto)
+        {
+            SqlConnection con = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                    cmd.Connection = con;
+                }
+                string sql = @"SELECT COUNT(idCriterio) FROM Criterios WHERE idProyecto=@idProyecto ";
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@idProyecto", idProyecto));
+                cmd.CommandText = sql;
+                return int.Parse(cmd.ExecuteScalar().ToString());
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("No se pudo obtener la cantidad de criterios del proyecto");
             }
             finally
             {

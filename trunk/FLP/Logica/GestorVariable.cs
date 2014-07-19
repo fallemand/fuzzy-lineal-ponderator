@@ -163,5 +163,12 @@ namespace Logica
                 return -9909;
             return -99010;
         }
+
+        public int obtenerCantVariablesPorProyecto()
+        {
+            DAOVariable daoVariable = new DAOVariable();
+            Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
+            return daoVariable.obtenerCantVariablesPorProyecto(proyecto.idProyecto);
+        }
     }
 }

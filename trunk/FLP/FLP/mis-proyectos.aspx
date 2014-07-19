@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/index.Master" AutoEventWireup="true" CodeBehind="mis-proyectos.aspx.cs" Inherits="FLP.mis_proyectos" %>
+﻿<%@ Page Title="Proyectos" Language="C#" MasterPageFile="~/index.Master" AutoEventWireup="true" CodeBehind="mis-proyectos.aspx.cs" Inherits="FLP.mis_proyectos" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
@@ -87,6 +87,11 @@
                             <h4 class="modal-title" id="myModalLabel">Eliminar Proyecto</h4>
                         </div>
                         <div class="modal-body">
+                            <asp:UpdatePanel runat="server">
+                                <ContentTemplate>
+                                    <strong>Proyecto: </strong><asp:Literal ID="litNombreProyecto" runat="server"></asp:Literal>
+                                </ContentTemplate>
+                            </asp:UpdatePanel>
                             ¿Esta seguro? Se eliminarán todas las variables, alternativas y criterios asociados.
                         </div>
                         <div class="modal-footer">

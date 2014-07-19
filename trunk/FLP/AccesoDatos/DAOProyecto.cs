@@ -40,6 +40,11 @@ namespace AccesoDatos
                 else
                     throw;
             }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
+            }
         }
 
         public DataTable obtenerTodosDataTable(Usuario usuario)
@@ -71,6 +76,11 @@ namespace AccesoDatos
             catch (Exception)
             {
                 throw new Exception("Error al obtener los Proyectos del Usuario");
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
             }
         }
 

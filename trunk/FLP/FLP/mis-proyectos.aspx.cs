@@ -27,13 +27,6 @@ namespace FLP
             }
         }
 
-        private void cargarRepeater()
-        {
-            GestorProyecto gestor = new GestorProyecto();
-            rptProyectos.DataSource = gestor.obtenerTodosDataTable();
-            rptProyectos.DataBind();
-        }
-
         protected void btnAgregar_Click(object sender, EventArgs e)
         {
             try
@@ -47,12 +40,6 @@ namespace FLP
                 mostrarError();
                 litError.Text = ex.Message;
             }
-        }
-
-        private void mostrarError()
-        {
-            panFracaso.Visible = true;
-            litError.Visible = true;
         }
 
         protected void rptProyectos_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -82,6 +69,7 @@ namespace FLP
                     GestorProyecto gestor = new GestorProyecto();
                     Proyecto proyecto = gestor.obtenerProyectoPorId(int.Parse(e.CommandArgument.ToString()));
                     Session["proyecto"] = proyecto;
+                    litNombreProyecto.Text = proyecto.nombre;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModalEliminar();", true);
                 }
             }
@@ -114,16 +102,6 @@ namespace FLP
             reestablecerPantalla();
         }
 
-        protected void reestablecerPantalla()
-        {
-            panFracaso.Visible = false;
-            Session["proyecto"] = null;
-            txtNombre.Value = "";
-            btnAgregar.Visible = true;
-            btnModificar.Visible = false;
-            btnCancelar.Visible = false;
-        }
-
         protected void btnCancelarEliminacion_Click(object sender, EventArgs e)
         {
             reestablecerPantalla();
@@ -133,9 +111,9 @@ namespace FLP
         {
             try
             {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "closeModalEliminar();", true);
                 GestorProyecto gestor = new GestorProyecto();
                 gestor.eliminarProyectoPorId();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "closeModalEliminar();", true);
                 cargarRepeater();
                 reestablecerPantalla();
             }
@@ -144,6 +122,30 @@ namespace FLP
                 mostrarError();
                 litError.Text = ex.Message;
             }
+        }
+
+        //-------------------------------------------------
+        //----------Metodos Auxiliares---------------------
+        //-------------------------------------------------
+        protected void reestablecerPantalla()
+        {
+            panFracaso.Visible = false;
+            Session["proyecto"] = null;
+            txtNombre.Value = "";
+            btnAgregar.Visible = true;
+            btnModificar.Visible = false;
+            btnCancelar.Visible = false;
+        }
+        private void mostrarError()
+        {
+            panFracaso.Visible = true;
+            litError.Visible = true;
+        }
+        private void cargarRepeater()
+        {
+            GestorProyecto gestor = new GestorProyecto();
+            rptProyectos.DataSource = gestor.obtenerTodosDataTable();
+            rptProyectos.DataBind();
         }
     }
 }
