@@ -1,34 +1,29 @@
-﻿<%@ Page Title="Criterios" Language="C#" MasterPageFile="~/proyecto.master" AutoEventWireup="true" CodeBehind="criterios.aspx.cs" Inherits="FLP.criterios" %>
-<%@ MasterType VirtualPath="~/proyecto.master" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" Title="Alternativas" MasterPageFile="~/proyecto.master" CodeBehind="alternativas.aspx.cs" Inherits="FLP.alternativas" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentProyecto" runat="server">
-    <asp:UpdatePanel runat="server">
+    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
         <ContentTemplate>
             <div class="panel panel-default shadow2">
-                <div class="panel-heading">1. Definir Criterios</div>
+                <div class="panel-heading">3. Definir Alternativas</div>
                 <div class="panel-body">
                     <fieldset class="form validationGroup" role="form">
                         <div class="row">
                             <div class="col-md-3">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="txtNombre" placeholder="Nombre del Criterio" maxlength="60" required runat="server">
+                                    <input type="text" class="form-control" id="txtNombre" rangelength="4,60" required placeholder="Nombre de la Alternativa" runat="server">
                                 </div>
                             </div>
                             <div class="col-md-2">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="txtAbreviacion" placeholder="Abreviación" maxlength="4" required rel="txtTooltip" title="Máximo 4 caracteres" data-toggle="tooltip" data-placement="top" runat="server">
+                                    <input type="text" class="form-control" id="txtAbreviacion" rangelength="1,4" required placeholder="Abreviación" rel="txtTooltip" title="Máximo 4 caracteres" data-toggle="tooltip" data-placement="top" runat="server">
                                 </div>
                             </div>
                             <div class="col-md-2">
-                                <div class="form-group">
-                                    <input type="number" class="form-control" id="txtPeso" placeholder="Peso" rel="txtTooltip" digit="true" max="10" min="1" maxlength="2" required title="Valor entre 1 y 10" data-toggle="tooltip" data-placement="top" runat="server">
-                                </div>
-                            </div>
-                            <div class="col-md-1">
                                 <div class="form-group colorpick" rel="txtTooltip" title="Seleccione un color" data-toggle="tooltip" data-placement="top">
                                     <input type="text" class="form-control" id="txtColor" value="#E1E1E1" runat="server" />
                                 </div>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-4 clearfix">
                                 <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-default btn-sm causesValidation" OnClick="btnAgregar_Click" />
                                 <asp:Button ID="btnModificar" runat="server" Text="Editar" CssClass="btn btn-default btn-sm causesValidation" OnClick="btnModificar_Click" Visible="false" />
                                 <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-default btn-sm" OnClick="btnCancelar_Click" Visible="false" />
@@ -42,7 +37,19 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-5">
+                            <asp:Repeater ID="rptValoracionesCriterios" runat="server" OnItemDataBound="rptValoracionesCriterios_ItemDataBound" >
+                                <ItemTemplate>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <asp:DropDownList ID="ddlVariables" runat="server" CssClass="form-control" required></asp:DropDownList>
+                                            <asp:HiddenField ID="txtIdCriterio" runat="server" />
+                                        </div>
+                                    </div>
+                                </ItemTemplate>
+                            </asp:Repeater>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-7">
                                 <asp:Panel ID="panFracaso" runat="server" CssClass="alert alert-danger alert-xs" Visible="False">
                                     <asp:Literal ID="litError" runat="server" Visible="False"></asp:Literal>
                                 </asp:Panel>
@@ -54,15 +61,18 @@
                             <thead>
                                 <tr>
                                     <th class="col-md-1">Color</th>
-                                    <th class="col-md-5">Criterio</th>
-                                    <th class="col-md-2">Abreviación</th>
-                                    <th class="col-md-1">Peso</th>
-                                    <th class="col-md-2">Peso Relativo</th>
+                                    <th class="col-md-3">Variable</th>
+                                    <th class="col-md-1">Abrev</th>
+                                    <asp:Repeater ID="rptCriteriosTabla" runat="server">
+                                        <ItemTemplate>
+                                            <th class="col-md-1"><%# Eval("abreviacion") %></th>
+                                        </ItemTemplate>
+                                    </asp:Repeater>
                                     <th class="col-md-1"></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <asp:Repeater ID="rptCriterios" runat="server" OnItemCommand="rptProyectos_ItemCommand">
+                                <asp:Repeater ID="rptAlternativas" runat="server" OnItemCommand="rptAlternativas_ItemCommand" OnItemDataBound="rptAlternativas_ItemDataBound">
                                     <ItemTemplate>
                                         <tr>
                                             <td>
@@ -70,11 +80,14 @@
                                             </td>
                                             <td><%# Eval("nombre") %></td>
                                             <td><%# Eval("abreviacion") %></td>
-                                            <td><%# Eval("peso") %></td>
-                                            <td><%# Eval("pesoRelativo") %></td>
+                                            <asp:Repeater ID="rptValoracionAlternativa" runat="server">
+                                                <ItemTemplate>
+                                                    <td><%# Eval("variable.abreviacion") %></td>
+                                                </ItemTemplate>
+                                            </asp:Repeater>
                                             <td>
-                                                <asp:LinkButton ClientIDMode="AutoID" ID="btnEditar" runat="server" CssClass="editar" CommandName="editar" CommandArgument='<%# Eval("idCriterio") %>' rel="txtTooltip" title="Editar" data-toggle="tooltip" data-placement="top"><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
-                                                <asp:LinkButton ClientIDMode="AutoID" ID="btnEliminar" runat="server" CssClass="editar" CommandName="eliminar" CommandArgument='<%# Eval("idCriterio") %>' rel="txtTooltip" title="Eliminar" data-toggle="tooltip" data-placement="top"><span class="glyphicon glyphicon-remove eliminar"></span></asp:LinkButton>
+                                                <asp:LinkButton ClientIDMode="AutoID" ID="btnEditar" runat="server" CssClass="editar" CommandName="editar" CommandArgument='<%# Eval("idAlternativa") %>' rel="txtTooltip" title="Editar" data-toggle="tooltip" data-placement="top"><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
+                                                <asp:LinkButton ClientIDMode="AutoID" ID="btnEliminar" runat="server" CssClass="editar" CommandName="eliminar" CommandArgument='<%# Eval("idAlternativa") %>' rel="txtTooltip" title="Eliminar" data-toggle="tooltip" data-placement="top"><span class="glyphicon glyphicon-remove eliminar"></span></asp:LinkButton>
                                             </td>
                                         </tr>
                                     </ItemTemplate>
@@ -83,20 +96,15 @@
                         </table>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 ">
+                        <div class="col-md-12">
                             <div class="well well-sm">
-                                <div id="pesosChart1"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="well well-sm">
-                                <div id="pesosChart2"></div>
+                                <div id="alternativasChart"></div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="panel-footer clearfix ">
-                    <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-primary pull-right" OnClick="btnSiguiente_Click" />
+                    <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-primary pull-right" OnClick="btnSiguiente_Click"/>
                 </div>
             </div>
         </ContentTemplate>
@@ -105,21 +113,20 @@
             <asp:AsyncPostBackTrigger ControlID="btnEliminar" EventName="Click" />
         </Triggers>
     </asp:UpdatePanel>
-    <div class="modal fade bs-example-modal-sm" id="eliminarCriterio" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+    <div class="modal fade bs-example-modal-sm" id="eliminarAlternativa" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Eliminar Criterio</h4>
+                    <h4 class="modal-title" id="myModalLabel">Eliminar Alternativa</h4>
                 </div>
                 <div class="modal-body">
-                    <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
                         <ContentTemplate>
-                            <strong>Criterio: </strong>
-                            <asp:Literal ID="litNombreCriterio" runat="server"></asp:Literal>
+                            <strong>Alternativa: </strong><asp:Literal ID="litNombreAlternativa" runat="server"></asp:Literal>
                         </ContentTemplate>
                     </asp:UpdatePanel>
-                    ¿Esta seguro? Se eliminará el criterio de todas las alternativas
+                    ¿Esta seguro de eliminar la alternativa?
                 </div>
                 <div class="modal-footer">
                     <asp:Button ID="btnCancelarEliminacion" runat="server" Text="Cancelar" CssClass="btn btn-default" data-dismiss="modal" OnClick="btnCancelarEliminacion_Click" />
@@ -130,45 +137,27 @@
     </div>
     <script>
         function openModalEliminar() {
-            $('#eliminarCriterio').modal('show');
+            $('#eliminarAlternativa').modal('show');
         };
         function closeModalEliminar() {
-            $('#eliminarCriterio').modal('hide');
+            $('#eliminarAlternativa').modal('hide');
         };
     </script>
 
     <script type="text/javascript">
         google.load('visualization', '1.0', { 'packages': ['corechart'] });
-        function drawPesosRelativos(datos, colores) {
-            // Create the data table.
-            var data = new google.visualization.DataTable();
-            data.addColumn('string', 'Topping');
-            data.addColumn('number', 'Slices');
-            data.addRows(
-                datos
-            );
-            //Opciones
-            var options = {
-                legend: 'none',
-                backgroundColor: '#FAFAFA',
-                colors: colores,
-            };
-            //Dibujar
-            var chart = new google.visualization.PieChart(document.getElementById('pesosChart2'));
-            chart.draw(data, options);
-        };
-
-        function drawPesos(datos) {
+        function drawAlternativas(datos, colores) {
             // Create the data table.
             var data = google.visualization.arrayToDataTable(datos);
             //Opciones
             var options = {
-                legend: 'none',
-                backgroundColor: '#FAFAFA',
+                height: 250,
+                colors: colores,
             };
             //Dibujar
-            var chart = new google.visualization.ColumnChart(document.getElementById('pesosChart1'));
+            var chart = new google.visualization.AreaChart(document.getElementById('alternativasChart'));
             chart.draw(data, options);
         }
     </script>
+
 </asp:Content>

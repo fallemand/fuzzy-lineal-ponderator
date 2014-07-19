@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/proyecto.master" AutoEventWireup="true" CodeBehind="variables.aspx.cs" Inherits="FLP.variables" %>
+﻿<%@ Page Title="Variables" Language="C#" MasterPageFile="~/proyecto.master" AutoEventWireup="true" CodeBehind="variables.aspx.cs" Inherits="FLP.variables" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentProyecto" runat="server">
     <asp:UpdatePanel ID="UpdatePanel1" runat="server">
@@ -114,7 +114,7 @@
                     </div>
                 </div>
                 <div class="panel-footer clearfix ">
-                    <button class="btn btn-primary pull-right">Siguiente</button>
+                    <asp:Button ID="btnSiguiente" runat="server" Text="Siguiente" CssClass="btn btn-primary pull-right" OnClick="btnSiguiente_Click"/>
                 </div>
             </div>
         </ContentTemplate>
@@ -128,10 +128,15 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                    <h4 class="modal-title" id="myModalLabel">Eliminar Proyecto</h4>
+                    <h4 class="modal-title" id="myModalLabel">Eliminar Variable</h4>
                 </div>
                 <div class="modal-body">
-                    ¿Esta seguro? Se eliminará la variable en todas las alternativas donde la haya usado.
+                    <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                        <ContentTemplate>
+                            <strong>Variable: </strong><asp:Literal ID="litNombreVariable" runat="server"></asp:Literal>
+                        </ContentTemplate>
+                    </asp:UpdatePanel>
+                    No se podrá eliminar la variable si esta siendo utilizada por alguna alternativa.
                 </div>
                 <div class="modal-footer">
                     <asp:Button ID="btnCancelarEliminacion" runat="server" Text="Cancelar" CssClass="btn btn-default" data-dismiss="modal" OnClick="btnCancelarEliminacion_Click" />

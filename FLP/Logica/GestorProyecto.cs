@@ -61,9 +61,11 @@ namespace Logica
         public void eliminarProyectoPorId()
         {
             DAOProyecto daoProyecto = new DAOProyecto();
+            DAOCriterio daoCriterio = new DAOCriterio();
             Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
             if(proyecto==null)
                 throw new Exception("No existe ningun Proyecto");
+            daoCriterio.eliminarCriterioPorProyecto(proyecto.idProyecto);
             daoProyecto.eliminarProyectoPorId(proyecto.idProyecto);
         }
     }

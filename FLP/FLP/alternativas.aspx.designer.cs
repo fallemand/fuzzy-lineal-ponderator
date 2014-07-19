@@ -10,7 +10,16 @@
 namespace FLP {
     
     
-    public partial class criterios {
+    public partial class alternativas {
+        
+        /// <summary>
+        /// Control UpdatePanel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
         /// Control txtNombre.
@@ -29,15 +38,6 @@ namespace FLP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtAbreviacion;
-        
-        /// <summary>
-        /// Control txtPeso.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl txtPeso;
         
         /// <summary>
         /// Control txtColor.
@@ -85,6 +85,15 @@ namespace FLP {
         protected global::System.Web.UI.UpdateProgress PageUpdateProgress;
         
         /// <summary>
+        /// Control rptValoracionesCriterios.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptValoracionesCriterios;
+        
+        /// <summary>
         /// Control panFracaso.
         /// </summary>
         /// <remarks>
@@ -103,13 +112,22 @@ namespace FLP {
         protected global::System.Web.UI.WebControls.Literal litError;
         
         /// <summary>
-        /// Control rptCriterios.
+        /// Control rptCriteriosTabla.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater rptCriterios;
+        protected global::System.Web.UI.WebControls.Repeater rptCriteriosTabla;
+        
+        /// <summary>
+        /// Control rptAlternativas.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater rptAlternativas;
         
         /// <summary>
         /// Control btnSiguiente.
@@ -121,22 +139,22 @@ namespace FLP {
         protected global::System.Web.UI.WebControls.Button btnSiguiente;
         
         /// <summary>
-        /// Control UpdatePanel1.
+        /// Control UpdatePanel2.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.UpdatePanel UpdatePanel1;
+        protected global::System.Web.UI.UpdatePanel UpdatePanel2;
         
         /// <summary>
-        /// Control litNombreCriterio.
+        /// Control litNombreAlternativa.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal litNombreCriterio;
+        protected global::System.Web.UI.WebControls.Literal litNombreAlternativa;
         
         /// <summary>
         /// Control btnCancelarEliminacion.
@@ -155,17 +173,5 @@ namespace FLP {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnEliminar;
-        
-        /// <summary>
-        /// Propiedad Master.
-        /// </summary>
-        /// <remarks>
-        /// Propiedad generada automáticamente.
-        /// </remarks>
-        public new FLP.proyecto Master {
-            get {
-                return ((FLP.proyecto)(base.Master));
-            }
-        }
     }
 }

@@ -523,3 +523,8 @@ margin-bottom: 0px;
 .first {
     padding-left: 0px;
 }
+
+.list-group .disabled:hover {
+    background-color: #ffffff;
+    cursor: default;
+}

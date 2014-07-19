@@ -17,9 +17,6 @@ namespace FLP
             {
                 try
                 {
-                    Proyecto proyecto = (Proyecto)Session["proyecto"];
-                    if (proyecto == null)
-                        Response.Redirect("mis-proyectos.aspx");
                     cargarRepeater();
                 }
                 catch (Exception ex)
@@ -47,22 +44,6 @@ namespace FLP
 	        }
         }
 
-        protected void cargarRepeater()
-        {
-            GestorCriterio gestor = new GestorCriterio();
-            rptCriterios.DataSource = gestor.obtenerCriteriosPorProyecto();
-            rptCriterios.DataBind();
-            cargarGraficos();
-            
-        }
-
-        private void cargarGraficos()
-        {
-            GestorCriterio gestor = new GestorCriterio();
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "pesos", "drawPesos(" + gestor.obtenerGraficoPesos() + ");", true);
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "pesosRelativos", "drawPesosRelativos(" + gestor.obtenerGraficoPesosRelativos() + ");", true);
-        }
-
         protected void rptProyectos_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             try
@@ -86,6 +67,7 @@ namespace FLP
                 {
                     Criterio criterio = gestor.obtenerCriterioPorId(int.Parse(e.CommandArgument.ToString()));
                     Session["criterio"] = criterio;
+                    litNombreCriterio.Text = criterio.nombre;
                     ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "openModalEliminar();", true);
                 }
                 cargarGraficos();
@@ -113,6 +95,54 @@ namespace FLP
             }
         }
 
+        protected void btnCancelar_Click(object sender, EventArgs e)
+        {
+            reestablecerPantalla();
+            cargarGraficos();
+        }
+
+        protected void btnCancelarEliminacion_Click(object sender, EventArgs e)
+        {
+            reestablecerPantalla();
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "closeModalEliminar();", true);
+                GestorCriterio gestor = new GestorCriterio();
+                gestor.eliminarCriterioPorId();
+                cargarRepeater();
+                reestablecerPantalla();
+            }
+            catch (Exception ex)
+            {
+                mostrarError();
+                litError.Text = ex.Message;
+            }
+        }
+
+        protected void btnSiguiente_Click(object sender, EventArgs e)
+        {
+            GestorCriterio gestor = new GestorCriterio();
+            if (gestor.obtenerCantCriteriosPorProyecto() > 0)
+                Response.Redirect("variables.aspx");
+            else
+            {
+                mostrarError();
+                litError.Text = "Debe cargar al menos un criterio!";
+            }
+        }
+
+        //-------------------------------------------------
+        //----------Metodos Auxiliares---------------------
+        //-------------------------------------------------
+        private void mostrarError()
+        {
+            panFracaso.Visible = true;
+            litError.Visible = true;
+        }
         protected void reestablecerPantalla()
         {
             panFracaso.Visible = false;
@@ -125,40 +155,22 @@ namespace FLP
             btnModificar.Visible = false;
             btnCancelar.Visible = false;
         }
-
-        protected void btnCancelar_Click(object sender, EventArgs e)
+        protected void cargarRepeater()
         {
-            reestablecerPantalla();
+            GestorCriterio gestor = new GestorCriterio();
+            rptCriterios.DataSource = gestor.obtenerCriteriosPorProyectoTable();
+            rptCriterios.DataBind();
             cargarGraficos();
-        }
 
-        private void mostrarError()
-        {
-            panFracaso.Visible = true;
-            litError.Visible = true;
         }
-
-        protected void btnCancelarEliminacion_Click(object sender, EventArgs e)
+        private void cargarGraficos()
         {
-            reestablecerPantalla();
-        }
-
-        protected void btnEliminar_Click(object sender, EventArgs e)
-        {
-            try
+            GestorCriterio gestor = new GestorCriterio();
+            if (gestor.obtenerCantCriteriosPorProyecto() > 0)
             {
-                GestorCriterio gestor = new GestorCriterio();
-                gestor.eliminarCriterioPorId();
-                ScriptManager.RegisterStartupScript(this, this.GetType(), "Pop", "closeModalEliminar();", true);
-                cargarRepeater();
-                reestablecerPantalla();
-            }
-            catch (Exception ex)
-            {
-                mostrarError();
-                litError.Text = ex.Message;
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "pesos", "drawPesos(" + gestor.obtenerGraficoPesos() + ");", true);
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "pesosRelativos", "drawPesosRelativos(" + gestor.obtenerGraficoPesosRelativos() + ");", true);
             }
         }
-
     }
 }

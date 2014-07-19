@@ -44,6 +44,11 @@ namespace AccesoDatos
                 else
                     throw;
             }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
+            }
         }
 
         public List<Variable> obtenerVariablesPorProyecto(int idProyecto)
@@ -166,6 +171,11 @@ namespace AccesoDatos
                 else
                     throw;
             }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
+            }
         }
 
         public void eliminarVariablePorId(int idVariable)
@@ -185,9 +195,41 @@ namespace AccesoDatos
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
             }
+            catch (SqlException sqlExc)
+            {
+                if (sqlExc.Class == 16 && sqlExc.Number==547)
+                    throw new Exception("No se pudo eliminar la variable porque esta siendo utilizada por una o más alternativas. Modifique la alternativa y luego intente eliminar la variable.");
+                else
+                    throw new Exception("Error al intentar eliminar la Variable: " + sqlExc.Message);
+                
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
+            }
+        }
+
+        public int obtenerCantVariablesPorProyecto(int idProyecto)
+        {
+            SqlConnection con = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                    cmd.Connection = con;
+                }
+                string sql = @"SELECT COUNT(idVariable) FROM Variables WHERE idProyecto=@idProyecto ";
+                cmd.Parameters.Clear();
+                cmd.Parameters.Add(new SqlParameter("@idProyecto", idProyecto));
+                cmd.CommandText = sql;
+                return int.Parse(cmd.ExecuteScalar().ToString());
+            }
             catch (Exception ex)
             {
-                throw new Exception("Error al intentar eliminar la Variable: " + ex.Message);
+                throw new Exception("No se pudo obtener la cantidad de variables del proyecto");
             }
             finally
             {
