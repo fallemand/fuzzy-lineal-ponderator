@@ -96,6 +96,7 @@
     <Content Include="js\modernizr.custom.28468.js" />
     <Content Include="js\responsive-tabs.js" />
     <Content Include="mis-proyectos.aspx" />
+    <Content Include="scriptBD.sql" />
     <Content Include="variables.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
