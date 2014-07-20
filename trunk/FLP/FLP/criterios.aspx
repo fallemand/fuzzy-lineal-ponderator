@@ -169,6 +169,6 @@
             //Dibujar
             var chart = new google.visualization.ColumnChart(document.getElementById('pesosChart1'));
             chart.draw(data, options);
-        }
+        };
     </script>
 </asp:Content>

@@ -157,7 +157,7 @@
             //Dibujar
             var chart = new google.visualization.AreaChart(document.getElementById('alternativasChart'));
             chart.draw(data, options);
-        }
+        };
     </script>
 
 </asp:Content>

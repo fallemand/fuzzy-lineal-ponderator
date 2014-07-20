@@ -171,6 +171,6 @@
             //Dibujar
             var chart = new google.visualization.AreaChart(document.getElementById('variablesChart'));
             chart.draw(data, options);
-        }
+        };
     </script>
 </asp:Content>
