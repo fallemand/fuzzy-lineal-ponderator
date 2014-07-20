@@ -34,7 +34,7 @@ namespace FLP
                         barraProgreso.Attributes.Add("style", "width: 75%");
                         litProgreso.Text = "75% Completado";
                         break;
-                    case "generarInforme.aspx": 
+                    case "generar-informe.aspx": 
                         barraProgreso.Attributes.Add("style", "width: 100%");
                         litProgreso.Text = "100% Completado";
                         break;

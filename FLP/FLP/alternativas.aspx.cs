@@ -117,8 +117,8 @@ namespace FLP
             }
             catch (Exception ex)
             {
-                Label lblMensajeEdiciones = (Label)e.Item.FindControl("lblMensajeEdiciones");
-                lblMensajeEdiciones.Text = ex.Message;
+                mostrarError();
+                litError.Text = ex.Message;
             }
         }
 
