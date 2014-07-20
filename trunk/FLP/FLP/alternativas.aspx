@@ -62,12 +62,13 @@
                                 <tr>
                                     <th class="col-md-1">Color</th>
                                     <th class="col-md-3">Variable</th>
-                                    <th class="col-md-1">Abrev</th>
+                                    <th class="col-md-1"><abbr title="Abreviación">Abrev</abbr></th>
                                     <asp:Repeater ID="rptCriteriosTabla" runat="server">
                                         <ItemTemplate>
                                             <th class="col-md-1"><%# Eval("abreviacion") %> (<%# Eval("peso") %>)</th>
                                         </ItemTemplate>
                                     </asp:Repeater>
+                                    <th class="col-md-1"><abbr title="Centro de Gravedad">CdG</abbr></th>
                                     <th class="col-md-1"></th>
                                 </tr>
                             </thead>
@@ -85,6 +86,7 @@
                                                     <td><%# Eval("variable.abreviacion") %></td>
                                                 </ItemTemplate>
                                             </asp:Repeater>
+                                            <td class="centroGravedad"><%# obtenerCentrodeGravedad((Entidades.Resultado)DataBinder.Eval(Container, "DataItem.resultado")) %></td>
                                             <td>
                                                 <asp:LinkButton ClientIDMode="AutoID" ID="btnEditar" runat="server" CssClass="editar" CommandName="editar" CommandArgument='<%# Eval("idAlternativa") %>' rel="txtTooltip" title="Editar" data-toggle="tooltip" data-placement="top"><span class="glyphicon glyphicon-pencil"></span></asp:LinkButton>
                                                 <asp:LinkButton ClientIDMode="AutoID" ID="btnEliminar" runat="server" CssClass="editar" CommandName="eliminar" CommandArgument='<%# Eval("idAlternativa") %>' rel="txtTooltip" title="Eliminar" data-toggle="tooltip" data-placement="top"><span class="glyphicon glyphicon-remove eliminar"></span></asp:LinkButton>

@@ -13,5 +13,10 @@ namespace FLP
         {
 
         }
+
+        protected void btnGenerarInforme_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("informe.aspx");
+        }
     }
 }

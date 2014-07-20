@@ -24,7 +24,8 @@ namespace Entidades
 
         public decimal obtenerCentroGravedad()
         {
-            return ((3 * b - obtenerAenFormaTriangularLR() + obtenerCenFormaTriangularLR()) / 3);
+            decimal cdg = ((3 * b - obtenerAenFormaTriangularLR() + obtenerCenFormaTriangularLR()) / 3);
+            return (Math.Truncate(1000 * cdg) / 1000);
         }
     }
 }

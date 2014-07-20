@@ -47,6 +47,15 @@ namespace FLP
                     rptAlternativaTdValoraciones.DataSource = ((Alternativa)e.Item.DataItem).listaDetallesAlternativa;
                     rptAlternativaTdValoraciones.DataBind();
                 }
+                else if (e.Item.ItemType == ListItemType.Header)
+                {
+                    
+                    GestorCriterio gestorCriterio = new GestorCriterio();
+                    List<Criterio> listaCriterios = gestorCriterio.obtenerCriteriosPorProyecto();
+                    Repeater rptAlternativasTh = (Repeater)e.Item.FindControl("rptAlternativasTh");
+                    rptAlternativasTh.DataSource = listaCriterios;
+                    rptAlternativasTh.DataBind();
+                }
             }
             catch (Exception ex)
             {
@@ -87,11 +96,6 @@ namespace FLP
 
         protected void cargarRepeaterAlternativas()
         {
-            GestorCriterio gestorCriterio = new GestorCriterio();
-            List<Criterio> listaCriterios = gestorCriterio.obtenerCriteriosPorProyecto();
-            rptAlternativasTh.DataSource = listaCriterios;
-            rptAlternativasTh.DataBind();
-
             GestorAlternativa gestorAlternativa = new GestorAlternativa();
             rptAlternativasTd.DataSource = gestorAlternativa.obtenerAlternativasPorProyecto();
             rptAlternativasTd.DataBind();
@@ -110,6 +114,11 @@ namespace FLP
         {
             panFracaso.Visible = true;
             litError.Visible = true;
+        }
+
+        protected decimal obtenerCentrodeGravedad(Resultado resultado)
+        {
+            return resultado.obtenerCentroGravedad();
         }
     }
 }
