@@ -260,5 +260,9 @@ namespace FLP
             if(gestor.obtenerCantAlternativasPorProyecto() > 0)
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "alternativas", "drawAlternativas(" + gestor.obtenerGraficoAlternativas() + ");", true);
         }
+        protected decimal obtenerCentrodeGravedad(Resultado resultado)
+        {
+            return resultado.obtenerCentroGravedad();
+        }
     }
 }

@@ -46,3 +46,9 @@ margin: 0 0 0px;
 .well-sm {
 padding: 10px 15px;
 }
+
+.centroGravedad {
+    font-size: 14px !important;
+    font-weight: bold !important;
+    color: #363636 !important;
+}

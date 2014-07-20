@@ -6,7 +6,7 @@
         <div class="panel-body">
             <p>A continuación podrá generar un informe de su proyecto</p>
             <div class="well well-lg">
-                <asp:Button ID="btnGenerarInforme" runat="server" Text="Generar Informe" CssClass="btn btn-xl btn-primary center-block" />
+                <asp:Button ID="btnGenerarInforme" runat="server" Text="Generar Informe" CssClass="btn btn-xl btn-primary center-block" OnClick="btnGenerarInforme_Click"/>
             </div>
         </div>
     </div>

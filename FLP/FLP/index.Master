@@ -79,8 +79,8 @@
                                             <div class="col-md-5 col-md-offset-7 nopadding-right">
                                                 <asp:Button ID="btnLogin" runat="server" Text="Ingresar" CssClass="btn btn-default navbar-btn btn-xs pull-right causesValidation" OnClick="btnLogin_Click" />
                                             </div>
-                                            <div class="col-md-12 nopadding-right">
-                                                <asp:Panel ID="panFracasoLogin" runat="server" CssClass="alert alert-danger alert-xs" Visible="False">
+                                            <div class="col-md-12 nopadding">
+                                                <asp:Panel ID="panFracasoLogin" runat="server" CssClass="alert alert-danger alert-xs nomargin-bottom" style="margin-top:10px;" Visible="False">
                                                     <asp:Literal ID="litErrorLogin" runat="server"></asp:Literal>
                                                 </asp:Panel>
                                             </div>

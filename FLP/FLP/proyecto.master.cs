@@ -45,20 +45,20 @@ namespace FLP
                 int cantVariables= gestorVariables.obtenerCantVariablesPorProyecto();
                 int cantAlterntivas= gestorAlternativa.obtenerCantAlternativasPorProyecto();
                 int cantCriterios= gestorCritero.obtenerCantCriteriosPorProyecto();
-                if (cantCriterios == 0)
-                {
-                    lbVaribles.Attributes.Add("class", "list-group-item disabled");
-                    lbAlterntivas.Attributes.Add("class", "list-group-item disabled");
-                    lbGenerarInforme.Attributes.Add("class", "list-group-item disabled");
-                }
-                else if (cantVariables == 0)
-                {
-                    lbAlterntivas.Attributes.Add("class", "list-group-item disabled");
-                    lbGenerarInforme.Attributes.Add("class", "list-group-item disabled");
-                }
-                else if(cantAlterntivas==0) {
-                    lbGenerarInforme.Attributes.Add("class", "list-group-item disabled");
-                }
+                //if (cantCriterios == 0)
+                //{
+                //    lbVaribles.Attributes.Add("class", "list-group-item disabled");
+                //    lbAlterntivas.Attributes.Add("class", "list-group-item disabled");
+                //    lbGenerarInforme.Attributes.Add("class", "list-group-item disabled");
+                //}
+                //else if (cantVariables == 0)
+                //{
+                //    lbAlterntivas.Attributes.Add("class", "list-group-item disabled");
+                //    lbGenerarInforme.Attributes.Add("class", "list-group-item disabled");
+                //}
+                //else if(cantAlterntivas==0) {
+                //    lbGenerarInforme.Attributes.Add("class", "list-group-item disabled");
+                //}
 
                 litCantCriterios.Text = cantCriterios.ToString();
                 litCantAlternativas.Text = cantAlterntivas.ToString();
