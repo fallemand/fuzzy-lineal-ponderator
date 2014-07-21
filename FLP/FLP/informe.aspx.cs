@@ -127,5 +127,12 @@ namespace FLP
                 return "Max";
             return "Min";
         }
+
+        protected string obtenerIconCriterio(Object esTipoMax)
+        {
+            if ((bool)esTipoMax)
+                return "glyphicon glyphicon-arrow-up";
+            return "glyphicon glyphicon-arrow-down";
+        }
     }
 }

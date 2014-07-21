@@ -56,11 +56,11 @@
                                                 <thead>
                                                     <tr>
                                                         <th class="col-md-1">Color</th>
-                                                        <th class="col-md-7">Criterio</th>
+                                                        <th class="col-md-6">Criterio</th>
                                                         <th class="col-md-1">Abrev</th>
                                                         <th class="col-md-1">Tipo</th>
                                                         <th class="col-md-1">Peso</th>
-                                                        <th class="col-md-2">Peso Rel</th>
+                                                        <th class="col-md-2">PesoRel</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -172,7 +172,7 @@
                                                             <HeaderTemplate>
                                                             </HeaderTemplate>
                                                             <ItemTemplate>
-                                                                <th class="col-md-1"><%# Eval("abreviacion") %> (<%# Eval("peso") %>)</th>
+                                                                <th class="col-md-1"><%# Eval("abreviacion") %> <%# Eval("peso") %><small><span class="<%# obtenerIconCriterio(Eval("esTipoMax")) %>"></span></small></th>
                                                             </ItemTemplate>
                                                         </asp:Repeater>
                                                         <th class="col-md-1"><abbr title="Centro de Gravedad">CdG</abbr></th>
