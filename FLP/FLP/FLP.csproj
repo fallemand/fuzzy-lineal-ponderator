@@ -62,7 +62,7 @@
     <Content Include="criterios.aspx" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\estilofl.css" />
-    <Content Include="css\estiloResultado.css" />
+    <Content Include="css\print.css" />
     <Content Include="css\slider.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="generar-informe.aspx" />

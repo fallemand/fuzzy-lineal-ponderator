@@ -19,7 +19,6 @@ namespace FLP
                 {
                     cargarRepeatersCriterios();
                     cargarRepeaterAlternativas();
-                    cargarGrafico();
                 }
                 catch (Exception ex)
                 {
@@ -140,7 +139,7 @@ namespace FLP
                 GestorAlternativa gestor = new GestorAlternativa();
                 gestor.registrarAlternativa(txtNombre.Value, txtAbreviacion.Value, txtColor.Value, listaValoraciones);
                 reestablecerPantalla();
-                //cargarRepeater();
+                cargarRepeaterAlternativas();
             }
             catch (Exception ex)
             {
@@ -178,6 +177,7 @@ namespace FLP
         protected void btnCancelar_Click(object sender, EventArgs e)
         {
             reestablecerPantalla();
+            cargarGrafico();
         }
 
         protected void btnCancelarEliminacion_Click(object sender, EventArgs e)
@@ -231,6 +231,7 @@ namespace FLP
             GestorAlternativa gestor = new GestorAlternativa();
             rptAlternativas.DataSource = gestor.obtenerAlternativasPorProyecto();
             rptAlternativas.DataBind();
+            cargarGrafico();
         }
         private void mostrarError()
         {
@@ -263,6 +264,12 @@ namespace FLP
         protected decimal obtenerCentrodeGravedad(Resultado resultado)
         {
             return resultado.obtenerCentroGravedad();
+        }
+        protected string obtenerTipoCriterio(Object esTipoMax)
+        {
+            if ((bool)esTipoMax)
+                return "glyphicon glyphicon-arrow-up";
+            return "glyphicon glyphicon-arrow-down";
         }
     }
 }

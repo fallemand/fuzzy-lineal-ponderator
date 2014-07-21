@@ -14,5 +14,13 @@ namespace Entidades
         public string abreviacion { get; set; }
         public int peso { get; set; }
         public string color { get; set; }
+        public bool esTipoMax { get; set; }
+
+        public string getTipo()
+        {
+            if (esTipoMax)
+                return "Max";
+            return "Min";
+        }
     }
 }

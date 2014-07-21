@@ -34,17 +34,17 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 nopadding-right">
                                         <div class="form-group">
                                             <input type="number" class="form-control" id="txtA" placeholder="Valor a" number="true" rangelength="1, 6"  required rel="txtTooltip" title="Valor numérico de a. Como lo indica la imagen" data-toggle="tooltip" data-placement="top" runat="server">
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 nopadding-right">
                                         <div class="form-group">
                                             <input type="number" class="form-control" id="txtB" placeholder="Valor b" number="true" rangelength="1, 6" required rel="txtTooltip" title="Valor numérico de b. Como lo indica la imagen" data-toggle="tooltip" data-placement="top" runat="server">
                                         </div>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2 nopadding-right">
                                         <div class="form-group">
                                             <input type="number" class="form-control" id="txtC" placeholder="Valor c" number="true" rangelength="1, 6"  required rel="txtTooltip" title="Valor numérico de c. Como lo indica la imagen" data-toggle="tooltip" data-placement="top" runat="server">
                                         </div>

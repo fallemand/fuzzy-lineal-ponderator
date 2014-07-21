@@ -103,16 +103,19 @@
                             </div>
                         </div>
                         <asp:UpdatePanel ID="pnlRegistrar" runat="server">
+                            <Triggers><asp:AsyncPostBackTrigger ControlID="btnRegistrar" EventName="Click" /></Triggers>
                             <ContentTemplate>
                                 <asp:UpdateProgress runat="server" id="PageUpdateProgress">
                                     <ProgressTemplate>
+                                        <div class="row">
                                         <div class="col-xs-12">
                                                 <img src="/img/theme/load.gif" class="img-responsive center-block"/>
                                         </div>
+                                        </div>
                                     </ProgressTemplate>
                                 </asp:UpdateProgress>
-                                <asp:Panel ID="panExito" runat="server" CssClass="alert alert-success" Visible="False"><asp:Literal ID="litMensaje" runat="server"></asp:Literal></asp:Panel>
-                                <asp:Panel ID="panFracaso" runat="server" CssClass="alert alert-danger" Visible="False"><strong><asp:Literal ID="litError" runat="server"></asp:Literal></strong></asp:Panel>
+                                <asp:Panel ID="panExito" runat="server" CssClass="alert alert-success nomargin-bottom" Visible="False"><asp:Literal ID="litMensaje" runat="server"></asp:Literal></asp:Panel>
+                                <asp:Panel ID="panFracaso" runat="server" CssClass="alert alert-danger nomargin-bottom" Visible="False"><strong><asp:Literal ID="litError" runat="server"></asp:Literal></strong></asp:Panel>
                             </ContentTemplate>
                         </asp:UpdatePanel>
                     </fieldset>

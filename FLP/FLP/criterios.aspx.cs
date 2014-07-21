@@ -33,7 +33,7 @@ namespace FLP
 	        {
                 litError.Visible = false;
 		        GestorCriterio gestor = new GestorCriterio();
-                gestor.registrarCriterio(txtNombre.Value, txtAbreviacion.Value, int.Parse(txtPeso.Value), txtColor.Value);
+                gestor.registrarCriterio(txtNombre.Value, txtAbreviacion.Value, int.Parse(txtPeso.Value), txtColor.Value,(int.Parse(ddlTipoCriterio.SelectedValue)!=0));
                 reestablecerPantalla();
                 cargarRepeater();
 	        }
@@ -59,6 +59,7 @@ namespace FLP
                     txtAbreviacion.Value = criterio.abreviacion;
                     txtPeso.Value = criterio.peso.ToString();
                     txtColor.Value = criterio.color;
+                    ddlTipoCriterio.SelectedValue = Convert.ToInt32(criterio.esTipoMax).ToString();
                     btnAgregar.Visible = false;
                     btnModificar.Visible = true;
                     btnCancelar.Visible = true;
@@ -84,7 +85,7 @@ namespace FLP
             try
             {
                 GestorCriterio gestor = new GestorCriterio();
-                gestor.modificarCriterio(txtNombre.Value, txtAbreviacion.Value, int.Parse(txtPeso.Value), txtColor.Value);
+                gestor.modificarCriterio(txtNombre.Value, txtAbreviacion.Value, int.Parse(txtPeso.Value), txtColor.Value, (int.Parse(ddlTipoCriterio.SelectedValue) != 0));
                 reestablecerPantalla();
                 cargarRepeater();
             }
@@ -151,6 +152,7 @@ namespace FLP
             txtAbreviacion.Value = "";
             txtColor.Value = "#E1E1E1";
             txtPeso.Value = "";
+            ddlTipoCriterio.SelectedValue = "0";
             btnAgregar.Visible = true;
             btnModificar.Visible = false;
             btnCancelar.Visible = false;
@@ -171,6 +173,13 @@ namespace FLP
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "pesos", "drawPesos(" + gestor.obtenerGraficoPesos() + ");", true);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "pesosRelativos", "drawPesosRelativos(" + gestor.obtenerGraficoPesosRelativos() + ");", true);
             }
+        }
+
+        protected string obtenerTipoCriterio(Object esTipoMax)
+        {
+            if ((bool)esTipoMax)
+                return "Max";
+            return "Min";
         }
     }
 }
