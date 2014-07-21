@@ -1,7 +1,7 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/index.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="FLP.index1" %>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentIndex" runat="server">
     <div class="container">
-        <div id="da-slider" class="da-slider">
+        <div id="da-slider" class="da-slider hidden-xs">
             <div class="da-slide">
                 <h2>Simple e Intituivo</h2>
                 <p>Cargue criterios, variables linguísticas y alternativas de una forma sencilla e intuitiva, con interfaces que lo guiarán paso a paso</p>
