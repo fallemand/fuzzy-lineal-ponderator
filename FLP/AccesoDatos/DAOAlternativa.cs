@@ -302,5 +302,48 @@ namespace AccesoDatos
                     con.Close();
             }
         }
+
+        public List<string> obtenerValoracionesCriteriosPorProyecto(int idProyecto, int idAlternativa)
+        {
+            SqlConnection con = new SqlConnection(cadenaDeConexion);
+            SqlCommand cmd = new SqlCommand();
+            List<string> lista = new List<string>(); ;
+            try
+            {
+                if (con.State == ConnectionState.Closed)
+                {
+                    con.Open();
+                    cmd.Connection = con;
+                }
+                string sql = @"SELECT v.abreviacion FROM Criterios c 
+	                            LEFT OUTER JOIN DetallesAlternativa da ON c.idCriterio=da.idCriterio and idAlternativa=@idAlternativa 
+	                            LEFT OUTER JOIN Variables v ON da.idVariable=v.idVariable
+	                            WHERE c.idProyecto=@idProyecto
+                                ORDER BY c.idCriterio";
+                cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("@idProyecto", idProyecto);
+                cmd.Parameters.AddWithValue("@idAlternativa", idAlternativa);
+                cmd.CommandText = sql;
+                SqlDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    if (dr["abreviacion"].ToString().Equals(""))
+                        lista.Add("-");
+                    else
+                        lista.Add(dr["abreviacion"].ToString());
+                }
+                return lista;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al intentar recuperar el detalle de la alternativa: " + ex.Message);
+            }
+            finally
+            {
+                if (con != null && con.State == ConnectionState.Open)
+                    con.Close();
+            }
+        }
     }
 }

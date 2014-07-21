@@ -2,6 +2,7 @@
 using Entidades;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -202,6 +203,13 @@ namespace Logica
             DAOAlternativa daoAlternativa = new DAOAlternativa();
             Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
             return daoAlternativa.obtenerCantAlternativasPorProyecto(proyecto.idProyecto);
+        }
+
+        public List<string> obtenerValoracionesCriteriosPorProyecto(Alternativa alternativa)
+        {
+            Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
+            DAOAlternativa daoAlternativa = new DAOAlternativa();
+            return daoAlternativa.obtenerValoracionesCriteriosPorProyecto(proyecto.idProyecto, alternativa.idAlternativa);
         }
     }
 }

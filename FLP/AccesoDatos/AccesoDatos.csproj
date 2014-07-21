@@ -46,7 +46,6 @@
     <Compile Include="DAOTipoUsuario.cs" />
     <Compile Include="DAOUsuario.cs" />
     <Compile Include="DAOVariable.cs" />
-    <Compile Include="GestorCriterio.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

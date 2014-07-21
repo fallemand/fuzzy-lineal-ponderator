@@ -18,25 +18,25 @@
                                     <input type="text" class="form-control" id="txtAbreviacion" placeholder="Abreviación" maxlength="4" required rel="txtTooltip" title="Máximo 4 caracteres" data-toggle="tooltip" data-placement="top" runat="server">
                                 </div>
                             </div>
-                            <div class="col-md-1 nopadding-left nopadding-right">
+                            <div class="col-md-2">
                                 <div class="form-group">
                                     <input type="number" class="form-control" id="txtPeso" placeholder="Peso" rel="txtTooltip" digit="true" max="10" min="1" maxlength="2" required title="Valor entre 1 y 10" data-toggle="tooltip" data-placement="top" runat="server">
                                 </div>
                             </div>
-                            <div class="col-md-2 nopadding-right">
+                            <!--<div class="col-md-2 nopadding-right">
                                 <div class="form-group">
                                     <asp:DropDownList ID="ddlTipoCriterio" runat="server" CssClass="form-control">
                                         <asp:ListItem Selected="True" Value="1">Max</asp:ListItem>
                                         <asp:ListItem Value="0">Min</asp:ListItem>
                                     </asp:DropDownList>
                                 </div>
-                            </div>
+                            </div>-->
                             <div class="col-md-1">
                                 <div class="form-group colorpick" rel="txtTooltip" title="Seleccione un color" data-toggle="tooltip" data-placement="top">
                                     <input type="text" class="form-control" id="txtColor" value="#E1E1E1" runat="server" />
                                 </div>
                             </div>
-                            <div class="col-md-2 nopadding-left nopadding-right">
+                            <div class="col-md-3 nopadding-right">
                                 <asp:Button ID="btnAgregar" runat="server" Text="Agregar" CssClass="btn btn-default btn-sm causesValidation" OnClick="btnAgregar_Click" />
                                 <asp:Button ID="btnModificar" runat="server" Text="Editar" CssClass="btn btn-default btn-sm causesValidation" OnClick="btnModificar_Click" Visible="false" />
                                 <asp:Button ID="btnCancelar" runat="server" Text="Cancelar" CssClass="btn btn-default btn-sm" OnClick="btnCancelar_Click" Visible="false" />
@@ -64,7 +64,7 @@
                                     <th class="col-md-1">Color</th>
                                     <th class="col-md-4">Criterio</th>
                                     <th class="col-md-1">Abrev</th>
-                                    <th class="col-md-1">Tipo</th>
+                                    <!--<th class="col-md-1">Tipo</th>-->
                                     <th class="col-md-1">Peso</th>
                                     <th class="col-md-1">Peso Rel</th>
                                     <th class="col-md-1"></th>
@@ -79,7 +79,7 @@
                                             </td>
                                             <td><%# Eval("nombre") %></td>
                                             <td><%# Eval("abreviacion") %></td>
-                                            <td><%# obtenerTipoCriterio(Eval("esTipoMax")) %></td>
+                                            <!--<td>//obtenerTipoCriterio(Eval("esTipoMax"))></td>-->
                                             <td><%# Eval("peso") %></td>
                                             <td><%# Eval("pesoRelativo") %></td>
                                             <td>

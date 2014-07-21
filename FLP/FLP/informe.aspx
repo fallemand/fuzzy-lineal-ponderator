@@ -58,7 +58,7 @@
                                                         <th class="col-md-1">Color</th>
                                                         <th class="col-md-6">Criterio</th>
                                                         <th class="col-md-1">Abrev</th>
-                                                        <th class="col-md-1">Tipo</th>
+                                                        <!--<th class="col-md-1">Tipo</th>-->
                                                         <th class="col-md-1">Peso</th>
                                                         <th class="col-md-2">PesoRel</th>
                                                     </tr>
@@ -72,7 +72,7 @@
                         </td>
                         <td><%# Eval("nombre") %></td>
                         <td><%# Eval("abreviacion") %></td>
-                        <td><%# obtenerTipoCriterio(Eval("esTipoMax")) %></td>
+                        <!--<td> obtenerTipoCriterio(Eval("esTipoMax"))</td>-->
                         <td><%# Eval("peso") %></td>
                         <td><%# Eval("pesoRelativo") %></td>
                     </tr>
@@ -172,10 +172,10 @@
                                                             <HeaderTemplate>
                                                             </HeaderTemplate>
                                                             <ItemTemplate>
-                                                                <th class="col-md-1"><%# Eval("abreviacion") %> <%# Eval("peso") %><small><span class="<%# obtenerIconCriterio(Eval("esTipoMax")) %>"></span></small></th>
+                                                                <th class="col-md-1"><%# Eval("abreviacion") %> <%# Eval("peso") %><!--<small><span class=" obtenerIconCriterio(Eval("esTipoMax")) "></span></small>--></th>
                                                             </ItemTemplate>
                                                         </asp:Repeater>
-                                                        <th class="col-md-1"><abbr title="Centro de Gravedad">CdG</abbr></th>
+                                                        <th class="col-md-1"><abbr title="Índice de Yager">Iyager</abbr></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>

@@ -110,7 +110,7 @@ namespace FLP
                 if (e.Item.ItemType == ListItemType.Item || e.Item.ItemType == ListItemType.AlternatingItem)
                 {
                     Repeater rptValoracionAlternativa = (Repeater)e.Item.FindControl("rptValoracionAlternativa");
-                    rptValoracionAlternativa.DataSource = ((Alternativa)e.Item.DataItem).listaDetallesAlternativa;
+                    rptValoracionAlternativa.DataSource = gestor.obtenerValoracionesCriteriosPorProyecto((Alternativa)e.Item.DataItem);
                     rptValoracionAlternativa.DataBind();
                 }
             }
@@ -270,6 +270,11 @@ namespace FLP
             if ((bool)esTipoMax)
                 return "glyphicon glyphicon-arrow-up";
             return "glyphicon glyphicon-arrow-down";
+        }
+
+        protected void rptValoracionAlternativa_ItemDataBound(object sender, RepeaterItemEventArgs e)
+        {
+
         }
     }
 }
