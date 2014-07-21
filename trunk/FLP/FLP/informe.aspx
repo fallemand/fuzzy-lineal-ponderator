@@ -8,7 +8,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="stylesheet" href="css/bootstrap.css" />
-    <link rel="stylesheet" href="css/estiloResultado.css" />
+    <link rel="stylesheet" href="css/print.css" />
     <link rel="shortcut icon" href="img/theme/favicon.ico" type="image/x-icon" />
     <link rel="icon" href="img/theme/favicon.ico" type="image/x-icon" />
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
@@ -55,9 +55,10 @@
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-                                                        <th class="col-xs-1">Color</th>
-                                                        <th class="col-md-5">Criterio</th>
-                                                        <th class="col-md-2">Abrev</th>
+                                                        <th class="col-md-1">Color</th>
+                                                        <th class="col-md-7">Criterio</th>
+                                                        <th class="col-md-1">Abrev</th>
+                                                        <th class="col-md-1">Tipo</th>
                                                         <th class="col-md-1">Peso</th>
                                                         <th class="col-md-2">Peso Rel</th>
                                                     </tr>
@@ -71,6 +72,7 @@
                         </td>
                         <td><%# Eval("nombre") %></td>
                         <td><%# Eval("abreviacion") %></td>
+                        <td><%# obtenerTipoCriterio(Eval("esTipoMax")) %></td>
                         <td><%# Eval("peso") %></td>
                         <td><%# Eval("pesoRelativo") %></td>
                     </tr>

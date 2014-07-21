@@ -65,10 +65,10 @@
                                     <th class="col-md-1"><abbr title="Abreviación">Abrev</abbr></th>
                                     <asp:Repeater ID="rptCriteriosTabla" runat="server">
                                         <ItemTemplate>
-                                            <th class="col-md-1"><%# Eval("abreviacion") %> (<%# Eval("peso") %>)</th>
+                                            <th class="col-md-1"> <abbr title="<%# Eval("nombre") %>"><%# Eval("abreviacion") %></abbr> <%# Eval("peso") %><small><span class="<%# obtenerTipoCriterio(Eval("esTipoMax")) %>"></span></small></th>
                                         </ItemTemplate>
                                     </asp:Repeater>
-                                    <th class="col-md-1"><abbr title="Centro de Gravedad">CdG</abbr></th>
+                                    <th class="col-md-1"><abbr title="Índice de Yager">Iyager</abbr></th>
                                     <th class="col-md-1"></th>
                                 </tr>
                             </thead>

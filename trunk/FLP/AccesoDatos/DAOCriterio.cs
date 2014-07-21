@@ -24,14 +24,15 @@ namespace AccesoDatos
                     con.Open();
                     cmd.Connection = con;
                 }
-                string sql = @"INSERT INTO Criterios(idProyecto, nombre, abreviacion, peso, color)
-                              VALUES (@idProyecto, @nombre, @abreviacion, @peso, @color) SELECT SCOPE_IDENTITY()";
+                string sql = @"INSERT INTO Criterios(idProyecto, nombre, abreviacion, peso, color, esTipoMax)
+                              VALUES (@idProyecto, @nombre, @abreviacion, @peso, @color, @esTipoMax) SELECT SCOPE_IDENTITY()";
                 cmd.Parameters.Clear();
                 cmd.Parameters.Add(new SqlParameter("@idProyecto", proyecto.idProyecto));
                 cmd.Parameters.Add(new SqlParameter("@nombre", criterio.nombre));
                 cmd.Parameters.Add(new SqlParameter("@abreviacion", criterio.abreviacion));
                 cmd.Parameters.Add(new SqlParameter("@peso", criterio.peso));
                 cmd.Parameters.Add(new SqlParameter("@color", criterio.color));
+                cmd.Parameters.Add(new SqlParameter("@esTipoMax", criterio.esTipoMax));
                 cmd.CommandText = sql;
                 return int.Parse(cmd.ExecuteScalar().ToString());
             }
@@ -60,7 +61,7 @@ namespace AccesoDatos
                     con.Open();
                     cmd.Connection = con;
                 }
-                string sql = @"UPDATE Criterios SET idProyecto=@idProyecto, nombre=@nombre, abreviacion=@abreviacion, peso=@peso, color=@color WHERE idCriterio=@idCriterio";
+                string sql = @"UPDATE Criterios SET idProyecto=@idProyecto, nombre=@nombre, abreviacion=@abreviacion, peso=@peso, color=@color, esTipoMax=@esTipoMax WHERE idCriterio=@idCriterio";
                 cmd.Parameters.Clear();
                 cmd.Parameters.Add(new SqlParameter("@idProyecto", criterio.idProyecto));
                 cmd.Parameters.Add(new SqlParameter("@nombre", criterio.nombre));
@@ -68,6 +69,7 @@ namespace AccesoDatos
                 cmd.Parameters.Add(new SqlParameter("@peso", criterio.peso));
                 cmd.Parameters.Add(new SqlParameter("@color", criterio.color));
                 cmd.Parameters.Add(new SqlParameter("@idCriterio", criterio.idCriterio));
+                cmd.Parameters.Add(new SqlParameter("@esTipoMax", criterio.esTipoMax));
                 cmd.CommandText = sql;
                 cmd.ExecuteNonQuery();
             }
@@ -99,7 +101,7 @@ namespace AccesoDatos
                 }
                 string sql = @"DECLARE @pesoTotal float
                              SET @pesoTotal = (SELECT SUM(peso) FROM Criterios WHERE idProyecto=@idProyecto)
-                             SELECT idCriterio, nombre, abreviacion, color, peso, CONVERT(FLOAT, ROUND(peso/@pesoTotal, 2, 1)) as pesoRelativo FROM Criterios WHERE idProyecto=@idProyecto";
+                             SELECT idCriterio, nombre, abreviacion, color, peso, esTipoMax, CONVERT(FLOAT, ROUND(peso/@pesoTotal, 2, 1)) as pesoRelativo FROM Criterios WHERE idProyecto=@idProyecto";
                 cmd.Parameters.Clear();
                 cmd.Parameters.Add(new SqlParameter("@idProyecto", proyecto.idProyecto));
                 cmd.CommandText = sql;
@@ -144,6 +146,7 @@ namespace AccesoDatos
                     criterio.abreviacion = dr["abreviacion"].ToString();
                     criterio.peso = Int32.Parse(dr["peso"].ToString());
                     criterio.color = dr["color"].ToString();
+                    criterio.esTipoMax = bool.Parse(dr["esTipoMax"].ToString());
                     criterio.idProyecto = Int32.Parse(dr["idProyecto"].ToString());
                 }
                 return criterio;
@@ -185,6 +188,7 @@ namespace AccesoDatos
                     criterio.abreviacion = dr["abreviacion"].ToString();
                     criterio.peso = Int32.Parse(dr["peso"].ToString());
                     criterio.color = dr["color"].ToString();
+                    criterio.esTipoMax = bool.Parse(dr["esTipoMax"].ToString());
                     criterio.idProyecto = Int32.Parse(dr["idProyecto"].ToString());
                     criterios.Add(criterio);
                 }

@@ -120,5 +120,12 @@ namespace FLP
         {
             return resultado.obtenerCentroGravedad();
         }
+
+        protected string obtenerTipoCriterio(Object esTipoMax)
+        {
+            if ((bool)esTipoMax)
+                return "Max";
+            return "Min";
+        }
     }
 }
