@@ -182,6 +182,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="index.Master" />
     <Content Include="proyecto.master" />
+    <None Include="Properties\PublishProfiles\facu.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
