@@ -11,9 +11,9 @@ namespace Logica
 {
     public class GestorCriterio
     {
-        public void registrarCriterio(string nombre, string abreviacion, int peso, string color, bool esTipoMax)
+        public void registrarCriterio(string nombre, string abreviacion, int peso, string color ) //bool esTipoMax
         {
-                Criterio criterio = new Criterio() { nombre = nombre, abreviacion = abreviacion, peso = peso, color = color, esTipoMax=esTipoMax };
+                Criterio criterio = new Criterio() { nombre = nombre, abreviacion = abreviacion, peso = peso, color = color }; //esTipoMax=esTipoMax
                 Proyecto proyecto = (Proyecto)System.Web.HttpContext.Current.Session["proyecto"];
                 DAOCriterio daoCriterio = new DAOCriterio();
                 criterio.idCriterio = daoCriterio.registrarCriterio(criterio, proyecto);
@@ -23,10 +23,10 @@ namespace Logica
                 System.Web.HttpContext.Current.Session["proyecto"] = proyecto;
         }
 
-        public void modificarCriterio(string nombre, string abreviacion, int peso, string color, bool esTipoMax)
+        public void modificarCriterio(string nombre, string abreviacion, int peso, string color) //bool esTipoMax
         {
                 Criterio criterioViejo = (Criterio)System.Web.HttpContext.Current.Session["criterio"];
-                Criterio criterioNuevo = new Criterio() { idCriterio = criterioViejo.idCriterio, idProyecto = criterioViejo.idProyecto, nombre = nombre, abreviacion = abreviacion, peso = peso, color = color, esTipoMax=esTipoMax };
+                Criterio criterioNuevo = new Criterio() { idCriterio = criterioViejo.idCriterio, idProyecto = criterioViejo.idProyecto, nombre = nombre, abreviacion = abreviacion, peso = peso, color = color }; //esTipoMax=esTipoMax
                 DAOCriterio daoCriterio = new DAOCriterio();
                 daoCriterio.modificarCriterio(criterioNuevo);
         }

@@ -33,7 +33,7 @@ namespace FLP
 	        {
                 litError.Visible = false;
 		        GestorCriterio gestor = new GestorCriterio();
-                gestor.registrarCriterio(txtNombre.Value, txtAbreviacion.Value, int.Parse(txtPeso.Value), txtColor.Value,(int.Parse(ddlTipoCriterio.SelectedValue)!=0));
+                gestor.registrarCriterio(txtNombre.Value, txtAbreviacion.Value, int.Parse(txtPeso.Value), txtColor.Value); //(int.Parse(ddlTipoCriterio.SelectedValue)!=0)
                 reestablecerPantalla();
                 cargarRepeater();
 	        }
@@ -59,7 +59,7 @@ namespace FLP
                     txtAbreviacion.Value = criterio.abreviacion;
                     txtPeso.Value = criterio.peso.ToString();
                     txtColor.Value = criterio.color;
-                    ddlTipoCriterio.SelectedValue = Convert.ToInt32(criterio.esTipoMax).ToString();
+                    //ddlTipoCriterio.SelectedValue = Convert.ToInt32(criterio.esTipoMax).ToString();
                     btnAgregar.Visible = false;
                     btnModificar.Visible = true;
                     btnCancelar.Visible = true;
@@ -85,7 +85,7 @@ namespace FLP
             try
             {
                 GestorCriterio gestor = new GestorCriterio();
-                gestor.modificarCriterio(txtNombre.Value, txtAbreviacion.Value, int.Parse(txtPeso.Value), txtColor.Value, (int.Parse(ddlTipoCriterio.SelectedValue) != 0));
+                gestor.modificarCriterio(txtNombre.Value, txtAbreviacion.Value, int.Parse(txtPeso.Value), txtColor.Value); //(int.Parse(ddlTipoCriterio.SelectedValue)!=0)
                 reestablecerPantalla();
                 cargarRepeater();
             }
@@ -152,7 +152,7 @@ namespace FLP
             txtAbreviacion.Value = "";
             txtColor.Value = "#E1E1E1";
             txtPeso.Value = "";
-            ddlTipoCriterio.SelectedValue = "0";
+            //ddlTipoCriterio.SelectedValue = "0";
             btnAgregar.Visible = true;
             btnModificar.Visible = false;
             btnCancelar.Visible = false;
@@ -175,11 +175,11 @@ namespace FLP
             }
         }
 
-        protected string obtenerTipoCriterio(Object esTipoMax)
-        {
-            if ((bool)esTipoMax)
-                return "Max";
-            return "Min";
-        }
+        //protected string obtenerTipoCriterio(Object esTipoMax)
+        //{
+        //    if ((bool)esTipoMax)
+        //        return "Max";
+        //    return "Min";
+        //}
     }
 }

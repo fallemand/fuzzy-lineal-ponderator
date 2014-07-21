@@ -121,18 +121,18 @@ namespace FLP
             return resultado.obtenerCentroGravedad();
         }
 
-        protected string obtenerTipoCriterio(Object esTipoMax)
-        {
-            if ((bool)esTipoMax)
-                return "Max";
-            return "Min";
-        }
+        //protected string obtenerTipoCriterio(Object esTipoMax)
+        //{
+        //    if ((bool)esTipoMax)
+        //        return "Max";
+        //    return "Min";
+        //}
 
-        protected string obtenerIconCriterio(Object esTipoMax)
-        {
-            if ((bool)esTipoMax)
-                return "glyphicon glyphicon-arrow-up";
-            return "glyphicon glyphicon-arrow-down";
-        }
+        //protected string obtenerIconCriterio(Object esTipoMax)
+        //{
+        //    if ((bool)esTipoMax)
+        //        return "glyphicon glyphicon-arrow-up";
+        //    return "glyphicon glyphicon-arrow-down";
+        //}
     }
 }

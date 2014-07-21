@@ -65,7 +65,7 @@
                                     <th class="col-md-1"><abbr title="Abreviación">Abrev</abbr></th>
                                     <asp:Repeater ID="rptCriteriosTabla" runat="server">
                                         <ItemTemplate>
-                                            <th class="col-md-1"> <abbr title="<%# Eval("nombre") %>"><%# Eval("abreviacion") %></abbr> <%# Eval("peso") %><small><span class="<%# obtenerTipoCriterio(Eval("esTipoMax")) %>"></span></small></th>
+                                            <th class="col-md-1"> <abbr title="<%# Eval("nombre") %>"><%# Eval("abreviacion") %></abbr> <%# Eval("peso") %><!--<small><span class=" obtenerTipoCriterio(Eval("esTipoMax")) "></span></small>--></th>
                                         </ItemTemplate>
                                     </asp:Repeater>
                                     <th class="col-md-1"><abbr title="Índice de Yager">Iyager</abbr></th>
@@ -83,7 +83,7 @@
                                             <td><%# Eval("abreviacion") %></td>
                                             <asp:Repeater ID="rptValoracionAlternativa" runat="server">
                                                 <ItemTemplate>
-                                                    <td><%# Eval("variable.abreviacion") %></td>
+                                                    <td><%# Container.DataItem %></td>
                                                 </ItemTemplate>
                                             </asp:Repeater>
                                             <td class="centroGravedad"><%# obtenerCentrodeGravedad((Entidades.Resultado)DataBinder.Eval(Container, "DataItem.resultado")) %></td>
