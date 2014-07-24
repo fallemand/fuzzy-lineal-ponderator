@@ -112,8 +112,8 @@
                     <div class="col-md-2 col-md-offset-1">
                         <h4>Fuzzy LP</h4>
                         <ul>
-                            <li><a href="javascript:;"><span class="glyphicon glyphicon-home"></span> Home</a></li>
-                            <li><a href="registrar.html"><span class="glyphicon glyphicon-plus-sign"></span> Registrarse</a></li>
+                            <li><a href="index.aspx"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                            <li><a href="index.aspx"><span class="glyphicon glyphicon-plus-sign"></span> Registrarse</a></li>
                         </ul>
                     </div>
                     <div class="col-md-2">
@@ -133,22 +133,21 @@
                     <div class="col-md-2">
                         <h4>Soporte y Ayuda</h4>
                         <ul>
-                            <li><a href="javascript:;"><span class="glyphicon glyphicon-question-sign"></span> Preguntas Frecuentes</a></li>
-                            <li><a href="javascript:;"><span class="glyphicon glyphicon-plus-sign"></span> Realiza una pregunta</a></li>
+                            <li><a href="img/theme/flp-manual-usuario.pdf"><span class="glyphicon glyphicon-question-sign"></span> Manual de Usuario</a></li>
                         </ul>
                     </div>
                     <div class="col-md-2">
                         <h4>Contacto</h4>
                         <ul>
-                            <li><span class="glyphicon glyphicon-envelope"></span> consultas@flp.com</li>
-                            <li><a href="http://www.egrappler.com;"><span class="glyphicon glyphicon-cog"></span> Formulario de Contacto</a></li>
+                            <li><span class="glyphicon glyphicon-envelope"></span> fallemand@outlook.com.ar</li>
+                            <li><a href="http://www.linkedin.com/profile/view?id=96300726"><span class="glyphicon glyphicon-cog"></span> Linked IN</a></li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="footer-inferior">
                 <div class="container">
-                    <p class="pull-right">Fuzzy Lineal Ponderation | Creado por <a href="maillto:allemand@outlook.com.ar">Facundo Allemand</a> &copy; 2014.</p>
+                    <p class="pull-right">Fuzzy Lineal Ponderation | Creado por <a href="maillto:fallemand@outlook.com.ar">Facundo Allemand</a> &copy; 2014.</p>
                 </div>
             </div>
         </div>
