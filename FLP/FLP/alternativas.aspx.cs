@@ -265,16 +265,11 @@ namespace FLP
         {
             return resultado.obtenerCentroGravedad();
         }
-        protected string obtenerTipoCriterio(Object esTipoMax)
-        {
-            if ((bool)esTipoMax)
-                return "glyphicon glyphicon-arrow-up";
-            return "glyphicon glyphicon-arrow-down";
-        }
-
-        protected void rptValoracionAlternativa_ItemDataBound(object sender, RepeaterItemEventArgs e)
-        {
-
-        }
+        //protected string obtenerTipoCriterio(Object esTipoMax)
+        //{
+        //    if ((bool)esTipoMax)
+        //        return "glyphicon glyphicon-arrow-up";
+        //    return "glyphicon glyphicon-arrow-down";
+        //}
     }
 }
