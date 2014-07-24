@@ -98,7 +98,9 @@
     <Content Include="mis-proyectos.aspx" />
     <Content Include="script.sql" />
     <Content Include="variables.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="activar.usuario.aspx.cs">
