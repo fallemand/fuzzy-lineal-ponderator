@@ -3,7 +3,7 @@
     <div class="container">
         <div id="da-slider" class="da-slider hidden-xs">
             <div class="da-slide">
-                <h2>Simple e Intituivo</h2>
+                <h2>Simple e Intuitivo</h2>
                 <p>Cargue criterios, variables linguísticas y alternativas de una forma sencilla e intuitiva, con interfaces que lo guiarán paso a paso</p>
                 <a href="#" onclick="$('#ContentIndex_txtNombre').focus(); return false;" class="da-link">Registrarse</a>
                 <div class="da-img">
@@ -25,7 +25,7 @@
             </div>
             <div class="da-slide">
                 <h2>Guarde Proyectos</h2>
-                <p>Almacenaremos todos sus proyectos, de forma tal que tenga acceso a ellos desde cualquier parte. Simplemente ingrese con su usuario y podrá acceder a todos ellos</p>
+                <p>Almacenaremos todos sus proyectos, de forma tal que tenga acceso a ellos desde cualquier parte y sin instalar ningún programa</p>
                 <a href="#" onclick="$('#ContentIndex_txtNombre').focus(); return false;" class="da-link">Registrarse</a>
                 <div class="da-img">
                     <img src="img/theme/guardar.png" alt="image01" /></div>
