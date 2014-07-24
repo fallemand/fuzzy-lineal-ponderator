@@ -54,7 +54,7 @@ namespace AccesoDatos
             {
                 trans.Rollback();
                 if (sqlExc.Class == 14)
-                    throw new Exception("Ya existe valoración para ese criterio");
+                    throw new Exception("Ya existe alternativa con ese nombre o abreviación");
                 else
                     throw;
             }
@@ -236,7 +236,7 @@ namespace AccesoDatos
             {
                 trans.Rollback();
                 if (sqlExc.Class == 14)
-                    throw new Exception("Ya existe valoración para ese criterio");
+                    throw new Exception("Ya existe una alternativa con ese nombre o abreviación");
                 else
                     throw;
             }
