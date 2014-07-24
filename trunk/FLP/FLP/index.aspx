@@ -40,20 +40,23 @@
                 <div class="panel-heading">Pasos para Realizar un Proyecto</div>
                 <div class="panel-body">
                     <ul class="nav nav-tabs responsive" style="margin-bottom: 15px;">
-                        <li class="active"><a href="#home" data-toggle="tab">1. Definir Criterios</a></li>
-                        <li class=""><a href="#profile" data-toggle="tab">2. Definir Variables</a></li>
-                        <li class=""><a href="#drop" data-toggle="tab">3. Definir Alternativas</a></li>
-                        <li class=""><a href="#drop" data-toggle="tab">4. Generar Informe</a></li>
+                        <li class="active"><a href="#criterios" data-toggle="tab">1. Definir Criterios</a></li>
+                        <li class=""><a href="#variables" data-toggle="tab">2. Definir Variables</a></li>
+                        <li class=""><a href="#alternativas" data-toggle="tab">3. Definir Alternativas</a></li>
+                        <li class=""><a href="#generar-informe" data-toggle="tab">4. Generar Informe</a></li>
                     </ul>
                     <div id="myTabContent" class="tab-content responsive">
-                        <div class="tab-pane fade active in thumbnail" id="home">
-                            <img src="img/theme/criterios.png" alt="criterios" />
+                        <div class="tab-pane fade active in thumbnail" id="criterios">
+                            <img src="img/theme/criterios.png" alt="criterios" class="img-responsive" />
                         </div>
-                        <div class="tab-pane fade thumbnail" id="profile">
-                            <img src="img/theme/variables.png" alt="variables" />
+                        <div class="tab-pane fade thumbnail" id="variables">
+                            <img src="img/theme/variables.png" alt="variables" class="img-responsive" />
                         </div>
-                        <div class="tab-pane fade thumbnail" id="drop">
-                            <p>Etsy mixtape wayfarers, ethical wes anderson tofu before they sold out mcsweeney's organic lomo retro fanny pack lo-fi farm-to-table readymade. Messenger bag gentrify pitchfork tattooed craft beer, iphone skateboard locavore carles etsy salvia banksy hoodie helvetica. DIY synth PBR banksy irony. Leggings gentrify squid 8-bit cred pitchfork.</p>
+                        <div class="tab-pane fade thumbnail" id="alternativas">
+                            <img src="img/theme/alternativas.png" alt="alternativas" class="img-responsive" />
+                        </div>
+                        <div class="tab-pane fade thumbnail" id="generar-informe">
+                            <img src="img/theme/generar-informe.png" alt="informe" class="img-responsive" />
                         </div>
                     </div>
                 </div>
