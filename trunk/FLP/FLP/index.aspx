@@ -97,7 +97,7 @@
                                 <div class="form-group">
                                     <label class="checkbox nomargin-top">
                                         <input type="checkbox" id="cbTerminos" required="true" name="cbTerminos">
-                                        Acuerdo con los <a href="">Términos y Condiciones</a>
+                                        Acuerdo con los <a href="javascript:;">Términos y Condiciones</a>
                                     </label>
                                 </div>
                             </div>
