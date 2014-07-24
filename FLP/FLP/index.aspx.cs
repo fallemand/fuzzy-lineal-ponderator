@@ -28,7 +28,7 @@ namespace FLP
                 string ActivationUrl = string.Empty;
                 string mail = txtEmail.Value;
                 string cuerpo = string.Empty;
-                ActivationUrl = Server.HtmlEncode("http://localhost:7270/activar.usuario.aspx?UserCode=" + codigo);
+                ActivationUrl = Server.HtmlEncode("http://www.flp.somee.com/activar.usuario.aspx?UserCode=" + codigo);
 
                 GestorMails gestorMail = new GestorMails();
                 gestorMail.mandarMailActivacion(mail, "Activación de Cuenta", ActivationUrl);

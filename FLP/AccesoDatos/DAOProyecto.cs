@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Entidades;
 using System.Data;
+using System.Globalization;
 
 namespace AccesoDatos
 {
@@ -107,7 +108,7 @@ namespace AccesoDatos
                     proyecto = new Proyecto();
                     proyecto.idProyecto = Int32.Parse(dr["idProyecto"].ToString());
                     proyecto.nombre = dr["nombre"].ToString();
-                    proyecto.fecha = DateTime.Parse(dr["fecha"].ToString());
+                    proyecto.fecha = DateTime.ParseExact(dr["fecha"].ToString(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 }
                 return proyecto;
             }
