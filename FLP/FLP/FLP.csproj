@@ -70,11 +70,13 @@
     <Content Include="img\theme\ab.png" />
     <Content Include="img\theme\abc.png" />
     <Content Include="img\theme\abcPrincipal.png" />
+    <Content Include="img\theme\alternativas.png" />
     <Content Include="img\theme\arrows.png" />
     <Content Include="img\theme\bc.png" />
     <Content Include="img\theme\body-bg.png" />
     <Content Include="img\theme\criterios.png" />
     <Content Include="img\theme\favicon.ico" />
+    <Content Include="img\theme\generar-informe.png" />
     <Content Include="img\theme\graficos.png" />
     <Content Include="img\theme\guardar.png" />
     <Content Include="img\theme\informe.png" />
