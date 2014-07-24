@@ -397,16 +397,12 @@ namespace AccesoDatos
             }
             finally
             {
-
                 if (con != null && con.State == ConnectionState.Open)
                 {
                     con.Close();
 
                 }
-
             }
-
         }
-
     }
 }
